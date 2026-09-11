@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Xz5fnLvfnz2Y3uhmN3o-g"
+uri = "file://artifacts/jatek/jatek-hostinger.zip"
+type = "unspecified"
+title = "JATEK — package Hostinger Cloud Startup"
+description = "Archive prête à extraire dans public_html sur Hostinger. Elle contient le build de production, les assets et le routage Apache."
+logical_id = "5c0f8388-c943-4f09-abb6-d0b19d8a4eed"
+content_hash = "sha256:21a4335b0aca47c13d3813d464eb63286aac5e2c3123d57cf79debc388f47083"
+size = 224340
+mtime_ms = 1789162926984
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:e10d8bf5-0833-44df-a229-80d7580ff0ee/5c0f8388-c943-4f09-abb6-d0b19d8a4eed/d84e95d2-87e1-48ae-ace1-9e2b3ab63c67"
+storage_version_token = "1789162952241257"
+content_type = "application/octet-stream"
