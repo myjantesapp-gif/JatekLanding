@@ -119,8 +119,9 @@ function PageFooter() {
         <div className="flex flex-col justify-between gap-3 pt-6 text-[11px] text-[#fffaf1]/45 sm:flex-row">
           <span>© 2024 JATEK. Fait avec soin à Oujda.</span>
           <div className="flex gap-5">
-            <Link href="/confidentialite" className="hover:text-[#fffaf1]" data-testid="link-footer-privacy">Confidentialité</Link>
-            <Link href="/mentions-legales" className="hover:text-[#fffaf1]" data-testid="link-footer-legal">Mentions légales</Link>
+            <a href="/confidentialite" className="cursor-pointer transition-colors hover:text-[#fffaf1] hover:underline hover:underline-offset-4" data-testid="link-footer-privacy">Confidentialité</a>
+            <a href="/mentions-legales" className="cursor-pointer transition-colors hover:text-[#fffaf1] hover:underline hover:underline-offset-4" data-testid="link-footer-legal">Mentions légales</a>
+            <a href="/cookies" className="cursor-pointer transition-colors hover:text-[#fffaf1] hover:underline hover:underline-offset-4" data-testid="link-footer-cookies">Cookies</a>
           </div>
         </div>
       </div>
@@ -326,6 +327,100 @@ function WaitlistForm() {
   return <form onSubmit={submit} className="mx-auto mt-8 flex max-w-[480px] flex-col gap-2 sm:flex-row"><input type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="votre@email.ma" className="min-h-12 flex-1 rounded-full border border-[#12494f]/15 bg-[#fffaf1] px-5 text-sm text-[#12494f] outline-none placeholder:text-[#12494f]/35 focus:border-[#df3f91]" aria-label="Votre adresse email" data-testid="input-waitlist-email" /><button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#12494f] px-6 text-sm font-extrabold text-[#fffaf1] transition-transform hover:-translate-y-0.5" data-testid="button-waitlist-submit">Me prévenir <Send size={15} /></button></form>;
 }
 
+function PrivacyPage() {
+  return (
+    <SimplePage
+      eyebrow="04 / Vos données, vos choix"
+      title={<>Votre vie privée,<br /><span className="text-[#df3f91]">notre priorité.</span></>}
+      intro="Cette page explique clairement quelles données JATEK peut recevoir, pourquoi elles sont utilisées et comment exercer vos droits."
+    >
+      <div className="mt-16 grid gap-8 border-t border-[#12494f]/15 pt-10 md:grid-cols-[190px_1fr]">
+        <aside className="font-mono-jatek text-[10px] uppercase tracking-[.16em] text-[#df3f91]">
+          Politique RGPD
+          <p className="mt-3 text-[#12494f]/45">Dernière mise à jour<br />11 septembre 2026</p>
+        </aside>
+        <article className="grid gap-10 text-[#12494f]">
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">1. Qui est responsable de vos données ?</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">JATEK est une plateforme de livraison locale opérée depuis Oujda, au Maroc. Pour toute question concernant vos données personnelles, vous pouvez écrire à <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a>.</p>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">2. Quelles données peuvent être concernées ?</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">Selon votre demande, il peut s’agir de votre nom, adresse email, numéro de téléphone, nom de commerce, catégorie d’activité et contenu de votre message. Nous ne demandons pas de données sensibles et nous ne stockons pas vos informations bancaires sur ce site vitrine.</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl bg-[#edf0dc] p-4"><p className="font-mono-jatek text-[10px] uppercase tracking-[.14em] text-[#df3f91]">Support</p><p className="mt-2 text-sm leading-6 text-[#12494f]/65">Nom, email et message.</p></div>
+              <div className="rounded-2xl bg-[#edf0dc] p-4"><p className="font-mono-jatek text-[10px] uppercase tracking-[.14em] text-[#df3f91]">Partenaire</p><p className="mt-2 text-sm leading-6 text-[#12494f]/65">Commerce, contact, téléphone et catégorie.</p></div>
+              <div className="rounded-2xl bg-[#edf0dc] p-4"><p className="font-mono-jatek text-[10px] uppercase tracking-[.14em] text-[#df3f91]">Attente</p><p className="mt-2 text-sm leading-6 text-[#12494f]/65">Adresse email si vous demandez à être prévenu.</p></div>
+            </div>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">3. Pourquoi les utiliser ?</h2>
+            <ul className="grid gap-3 text-base leading-7 text-[#12494f]/65">
+              <li className="flex gap-3"><span className="mt-2 size-2 shrink-0 rounded-full bg-[#df3f91]" />Répondre à une demande envoyée au support.</li>
+              <li className="flex gap-3"><span className="mt-2 size-2 shrink-0 rounded-full bg-[#df3f91]" />Recontacter un commerce qui souhaite devenir partenaire.</li>
+              <li className="flex gap-3"><span className="mt-2 size-2 shrink-0 rounded-full bg-[#df3f91]" />Vous prévenir du lancement si vous vous inscrivez volontairement à la liste d’attente.</li>
+              <li className="flex gap-3"><span className="mt-2 size-2 shrink-0 rounded-full bg-[#df3f91]" />Sécuriser, maintenir et améliorer le site.</li>
+            </ul>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">4. Quelle est la base légale ?</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">Nous traitons une demande que vous envoyez pour pouvoir y répondre, et nous nous appuyons sur votre démarche volontaire pour la liste d’attente. Lorsque le consentement est nécessaire, vous pouvez le retirer à tout moment en nous écrivant. Aucun profilage publicitaire n’est réalisé par JATEK sur ce site.</p>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">5. Qui reçoit vos données et combien de temps ?</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">Vos données sont accessibles uniquement aux personnes qui doivent traiter votre demande et aux prestataires techniques nécessaires à l’hébergement du site ou à l’acheminement d’un email. Elles sont conservées pendant le temps nécessaire au traitement de votre demande, puis supprimées ou anonymisées selon les obligations applicables.</p>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">6. Vos droits</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de vos données. Vous pouvez aussi demander la portabilité lorsque ce droit s’applique. Écrivez à <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a> en précisant votre demande et l’adresse utilisée. Nous pouvons demander un justificatif raisonnable pour éviter toute divulgation à la mauvaise personne.</p>
+          </section>
+          <section className="grid gap-4">
+            <h2 className="font-display text-3xl font-bold tracking-[-.04em]">7. Cookies et sécurité</h2>
+            <p className="text-base leading-8 text-[#12494f]/65">JATEK n’utilise pas, à ce jour, de cookies publicitaires ou de mesure d’audience. Des éléments techniques peuvent être nécessaires au fonctionnement du site. Nous appliquons des mesures raisonnables pour protéger les échanges, mais aucun service en ligne ne peut garantir une sécurité absolue.</p>
+            <Link href="/cookies" className="inline-flex w-fit items-center gap-2 font-bold text-[#df3f91] underline underline-offset-4">Consulter la politique cookies <ArrowRight size={15} /></Link>
+          </section>
+          <p className="border-t border-[#12494f]/15 pt-6 text-sm leading-7 text-[#12494f]/55">Si vous estimez que votre demande n’a pas été correctement traitée, vous pouvez également contacter l’autorité de protection des données compétente dans votre pays, notamment la CNDP au Maroc ou l’autorité compétente lorsque le RGPD s’applique.</p>
+        </article>
+      </div>
+    </SimplePage>
+  );
+}
+
+function LegalDetailsPage() {
+  return (
+    <SimplePage
+      eyebrow="05 / Transparence"
+      title={<>Les choses<br /><span className="text-[#df3f91]">claires.</span></>}
+      intro="Les informations légales de JATEK, présentées simplement — parce que la confiance commence par la clarté."
+    >
+      <div className="mt-16 grid gap-8 border-t border-[#12494f]/15 pt-10 md:grid-cols-[190px_1fr]">
+        <aside className="font-mono-jatek text-[10px] uppercase tracking-[.16em] text-[#df3f91]">Mentions légales<p className="mt-3 text-[#12494f]/45">Dernière mise à jour<br />11 septembre 2026</p></aside>
+        <article className="grid gap-10 text-[#12494f]">
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Éditeur du site</h2><p className="text-base leading-8 text-[#12494f]/65">JATEK est une marque de livraison locale en cours de déploiement à Oujda, Maroc. Le site est édité par JATEK et s’adresse en priorité aux habitants et commerces d’Oujda.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Nous contacter</h2><p className="text-base leading-8 text-[#12494f]/65">Email : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a><br />Téléphone : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="tel:+212536000000">+212 5 36 00 00 00</a></p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Hébergement</h2><p className="text-base leading-8 text-[#12494f]/65">Le site est hébergé par Hostinger, dans le cadre du plan Cloud Startup utilisé pour sa mise en ligne. Les informations techniques d’hébergement et de société éditrice doivent être complétées avec les mentions contractuelles exactes avant la publication commerciale.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Propriété intellectuelle</h2><p className="text-base leading-8 text-[#12494f]/65">La marque JATEK, son identité visuelle, ses textes, illustrations et éléments graphiques sont protégés. Toute reproduction ou utilisation sans autorisation préalable est interdite.</p></section>
+        </article>
+      </div>
+    </SimplePage>
+  );
+}
+
+function CookiesPage() {
+  return (
+    <SimplePage eyebrow="06 / Navigation" title={<>Une navigation<br /><span className="text-[#df3f91]">sans surprise.</span></>} intro="JATEK limite les traceurs au strict nécessaire et explique ici ce qui peut être utilisé lorsque vous consultez le site.">
+      <div className="mt-16 grid gap-8 border-t border-[#12494f]/15 pt-10 md:grid-cols-[190px_1fr]">
+        <aside className="font-mono-jatek text-[10px] uppercase tracking-[.16em] text-[#df3f91]">Politique cookies<p className="mt-3 text-[#12494f]/45">Dernière mise à jour<br />11 septembre 2026</p></aside>
+        <article className="grid gap-10 text-[#12494f]">
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Pas de cookies publicitaires</h2><p className="text-base leading-8 text-[#12494f]/65">Le site JATEK n’utilise pas actuellement de cookies publicitaires, de reciblage ou de mesure d’audience. Nous ne vendons pas votre activité de navigation.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Éléments techniques</h2><p className="text-base leading-8 text-[#12494f]/65">L’hébergement et le fonctionnement du site peuvent nécessiter des éléments techniques indispensables à la sécurité, à la navigation et au chargement des pages. Ils ne servent pas à créer un profil publicitaire.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Une question ?</h2><p className="text-base leading-8 text-[#12494f]/65">Pour toute question sur vos données ou les traceurs utilisés, écrivez à <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a>.</p></section>
+        </article>
+      </div>
+    </SimplePage>
+  );
+}
+
 function SimplePage({ eyebrow, title, intro, children }: { eyebrow: string; title: ReactNode; intro: string; children: ReactNode }) {
   return <div className="site-shell min-h-screen bg-[#fffaf1]"><Header /><main className="px-5 pb-24 pt-36 sm:px-8"><div className="mx-auto max-w-[940px]"><p className="font-mono-jatek text-[10px] uppercase tracking-[.2em] text-[#df3f91]">{eyebrow}</p><h1 className="mt-5 max-w-[820px] font-display text-[clamp(3.4rem,7vw,7rem)] font-bold leading-[.88] tracking-[-.075em] text-[#12494f]">{title}</h1><p className="mt-8 max-w-[650px] text-lg leading-8 text-[#12494f]/65">{intro}</p>{children}<div className="mt-16 flex flex-col gap-5 rounded-[1.7rem] bg-[#edf0dc] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"><div><p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#df3f91]">Une question ?</p><p className="mt-2 font-display text-2xl font-bold tracking-[-.04em] text-[#12494f]">L’équipe JATEK est là pour vous répondre.</p></div><Link href="/support" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#12494f] px-5 py-3 text-sm font-extrabold text-[#fffaf1] transition-transform hover:-translate-y-0.5" data-testid="link-legal-support">Ouvrir le support <ArrowRight size={16} /></Link></div></div></main><PageFooter /></div>;
 }
@@ -350,7 +445,7 @@ function PartnerPage() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><WouterRoute path="/" component={Home} /><WouterRoute path="/confidentialite"><LegalPage privacy /></WouterRoute><WouterRoute path="/mentions-legales"><LegalPage /></WouterRoute><WouterRoute path="/support" component={SupportPage} /><WouterRoute path="/devenir-partenaire" component={PartnerPage} /><WouterRoute component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><WouterRoute path="/" component={Home} /><WouterRoute path="/confidentialite" component={PrivacyPage} /><WouterRoute path="/mentions-legales" component={LegalDetailsPage} /><WouterRoute path="/cookies" component={CookiesPage} /><WouterRoute path="/support" component={SupportPage} /><WouterRoute path="/devenir-partenaire" component={PartnerPage} /><WouterRoute component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {

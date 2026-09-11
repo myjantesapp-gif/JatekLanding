@@ -20,6 +20,7 @@ Le fichier `.htaccess` est inclus pour que les routes React suivantes restent ac
 - `/`
 - `/confidentialite`
 - `/mentions-legales`
+- `/cookies`
 - `/support`
 - `/devenir-partenaire`
 
