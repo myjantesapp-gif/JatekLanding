@@ -1,6 +1,7 @@
 import { type FormEvent, type ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowDownRight, ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, FileText, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Phone, Route, Scissors, Send, ShieldCheck, ShoppingBag, Sparkles, Store, Users, X } from 'lucide-react';
+import jatekLogo from '@assets/jatek-logo-transparent.png';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -29,11 +30,9 @@ const faqs = [
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className="group inline-flex items-center gap-2.5" data-testid="link-logo">
-      <span className={`relative grid size-9 place-items-center rounded-[11px] ${light ? 'bg-[#f1e549] text-[#12494f]' : 'bg-[#df3f91] text-[#fffaf1]'} transition-transform duration-300 group-hover:rotate-[-8deg]`}>
-        <span className="font-display text-[25px] font-bold leading-none">J</span>
-        <span className={`absolute bottom-[6px] right-[6px] size-1.5 rounded-full ${light ? 'bg-[#df3f91]' : 'bg-[#f1e549]'}`} />
+      <span className={`flex items-center rounded-[11px] px-2 py-1.5 transition-transform duration-300 group-hover:rotate-[-3deg] ${light ? 'bg-[#fffaf1]' : 'bg-[#fffaf1]/85'}`}>
+        <img src={jatekLogo} alt="JATEK" className="h-7 w-[92px] object-contain sm:h-8 sm:w-[104px]" />
       </span>
-      <span className={`font-display text-[22px] font-bold tracking-[-.07em] ${light ? 'text-[#fffaf1]' : 'text-[#12494f]'}`}>JATEK<span className={light ? 'text-[#f1e549]' : 'text-[#df3f91]'}>.</span></span>
     </Link>
   );
 }
