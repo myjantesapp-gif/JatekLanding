@@ -92,7 +92,7 @@ function PageFooter() {
             <p className="mt-6 max-w-[280px] text-sm leading-6 text-[#fffaf1]/65">Le meilleur d’Oujda, livré avec attention. Une adresse après l’autre.</p>
             <div className="mt-7 flex items-center gap-3">
               <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="grid size-9 place-items-center rounded-full border border-white/20 transition-colors hover:border-[#f1e549] hover:text-[#f1e549]" aria-label="Instagram" data-testid="link-instagram"><Instagram size={15} /></a>
-              <a href="mailto:bonjour@jatek.ma" className="grid size-9 place-items-center rounded-full border border-white/20 transition-colors hover:border-[#f1e549] hover:text-[#f1e549]" aria-label="Email JATEK" data-testid="link-footer-email"><Mail size={15} /></a>
+              <a href="mailto:contact@jatek.app" className="grid size-9 place-items-center rounded-full border border-white/20 transition-colors hover:border-[#f1e549] hover:text-[#f1e549]" aria-label="Email JATEK" data-testid="link-footer-email"><Mail size={15} /></a>
             </div>
           </div>
           <div>
@@ -108,7 +108,7 @@ function PageFooter() {
             <div className="mt-5 grid gap-3 text-sm text-[#fffaf1]/70">
               <Link href="/support" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-support">Centre d’aide</Link>
               <a href="tel:+212536000000" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-phone">+212 5 36 00 00 00</a>
-              <a href="mailto:bonjour@jatek.ma" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-mail">bonjour@jatek.ma</a>
+              <a href="mailto:contact@jatek.app" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-mail">contact@jatek.app</a>
             </div>
           </div>
           <div>
@@ -285,7 +285,24 @@ function LocalProof() {
 }
 
 function Home() {
-  return <div className="site-shell noise-overlay"><Header /><main><Hero /><MarqueeBand /><UniversSection /><HowItWorks /><LocalProof /><HomeCta /></main><PageFooter /></div>;
+  return <div className="site-shell noise-overlay"><Header /><main><Hero /><MarqueeBand /><UniversSection /><HowItWorks /><LocalProof /><HomeSupport /><HomeCta /></main><PageFooter /></div>;
+}
+
+function HomeSupport() {
+  return (
+    <section className="bg-[#50c5c3] px-5 py-16 sm:px-8 lg:py-20">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-8 rounded-[2rem] bg-[#12494f] px-6 py-8 text-[#fffaf1] sm:px-10 md:flex-row md:items-center md:justify-between md:py-10">
+        <div>
+          <p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#f1e549]">Besoin d’aide ?</p>
+          <h2 className="mt-3 max-w-[620px] font-display text-3xl font-bold leading-tight tracking-[-.04em] sm:text-4xl">Une commande, une question, une solution.</h2>
+          <p className="mt-3 max-w-[560px] text-sm leading-6 text-[#fffaf1]/65">Le centre de support JATEK vous aide pour vos commandes, vos données et vos demandes de partenariat.</p>
+        </div>
+        <Link href="/support" className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#df3f91] px-6 py-4 text-sm font-extrabold text-white transition-transform hover:-translate-y-1" data-testid="link-home-support">
+          Ouvrir le support <ArrowRight size={17} />
+        </Link>
+      </div>
+    </section>
+  );
 }
 
 function HomeCta() {
@@ -310,7 +327,7 @@ function WaitlistForm() {
 }
 
 function SimplePage({ eyebrow, title, intro, children }: { eyebrow: string; title: ReactNode; intro: string; children: ReactNode }) {
-  return <div className="site-shell min-h-screen bg-[#fffaf1]"><Header /><main className="px-5 pb-24 pt-36 sm:px-8"><div className="mx-auto max-w-[940px]"><p className="font-mono-jatek text-[10px] uppercase tracking-[.2em] text-[#df3f91]">{eyebrow}</p><h1 className="mt-5 max-w-[820px] font-display text-[clamp(3.4rem,7vw,7rem)] font-bold leading-[.88] tracking-[-.075em] text-[#12494f]">{title}</h1><p className="mt-8 max-w-[650px] text-lg leading-8 text-[#12494f]/65">{intro}</p>{children}</div></main><PageFooter /></div>;
+  return <div className="site-shell min-h-screen bg-[#fffaf1]"><Header /><main className="px-5 pb-24 pt-36 sm:px-8"><div className="mx-auto max-w-[940px]"><p className="font-mono-jatek text-[10px] uppercase tracking-[.2em] text-[#df3f91]">{eyebrow}</p><h1 className="mt-5 max-w-[820px] font-display text-[clamp(3.4rem,7vw,7rem)] font-bold leading-[.88] tracking-[-.075em] text-[#12494f]">{title}</h1><p className="mt-8 max-w-[650px] text-lg leading-8 text-[#12494f]/65">{intro}</p>{children}<div className="mt-16 flex flex-col gap-5 rounded-[1.7rem] bg-[#edf0dc] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"><div><p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#df3f91]">Une question ?</p><p className="mt-2 font-display text-2xl font-bold tracking-[-.04em] text-[#12494f]">L’équipe JATEK est là pour vous répondre.</p></div><Link href="/support" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#12494f] px-5 py-3 text-sm font-extrabold text-[#fffaf1] transition-transform hover:-translate-y-0.5" data-testid="link-legal-support">Ouvrir le support <ArrowRight size={16} /></Link></div></div></main><PageFooter /></div>;
 }
 
 function LegalPage({ privacy = false }: { privacy?: boolean }) {
@@ -321,7 +338,7 @@ function SupportPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const submit = (event: FormEvent) => { event.preventDefault(); setSent(true); };
+  const submit = (event: FormEvent) => { event.preventDefault(); const body = `Bonjour JATEK,\n\nNom : ${form.name}\nEmail : ${form.email}\n\n${form.message}\n\nEnvoyé depuis le centre de support JATEK.`; window.location.href = `mailto:contact@jatek.app?subject=${encodeURIComponent('Support JATEK — demande de contact')}&body=${encodeURIComponent(body)}`; setSent(true); };
   return <div className="site-shell min-h-screen bg-[#fffaf1]"><Header /><main className="px-5 pb-24 pt-36 sm:px-8"><div className="mx-auto max-w-[1240px]"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p className="font-mono-jatek text-[10px] uppercase tracking-[.2em] text-[#df3f91]">06 / On est là</p><h1 className="mt-5 font-display text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[.86] tracking-[-.075em] text-[#12494f]">Parlons-nous<br /><span className="text-[#df3f91]">vraiment.</span></h1><p className="mt-8 max-w-[410px] text-lg leading-8 text-[#12494f]/65">Une question sur une commande, une idée à partager ou juste besoin d’un coup de main ? Notre équipe locale vous répond.</p><div className="mt-10 grid gap-3"><a href="mailto:bonjour@jatek.ma" className="flex items-center gap-4 rounded-2xl border border-[#12494f]/12 bg-[#edf0dc] p-4 transition-transform hover:-translate-y-1" data-testid="link-support-email"><span className="grid size-11 place-items-center rounded-xl bg-[#f1e549] text-[#12494f]"><Mail size={19} /></span><span><span className="block text-[10px] font-bold uppercase tracking-[.12em] text-[#12494f]/45">Écrivez-nous</span><span className="mt-1 block text-sm font-extrabold text-[#12494f]">bonjour@jatek.ma</span></span><ArrowUpRight size={16} className="ml-auto text-[#df3f91]" /></a><a href="tel:+212536000000" className="flex items-center gap-4 rounded-2xl border border-[#12494f]/12 bg-[#edf0dc] p-4 transition-transform hover:-translate-y-1" data-testid="link-support-phone"><span className="grid size-11 place-items-center rounded-xl bg-[#50c5c3] text-[#12494f]"><Phone size={19} /></span><span><span className="block text-[10px] font-bold uppercase tracking-[.12em] text-[#12494f]/45">Appelez-nous</span><span className="mt-1 block text-sm font-extrabold text-[#12494f]">+212 5 36 00 00 00</span></span><ArrowUpRight size={16} className="ml-auto text-[#df3f91]" /></a></div></div><div className="rounded-[2rem] bg-[#12494f] p-6 text-[#fffaf1] sm:p-10"><div className="flex items-center justify-between"><div><p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#f1e549]">Envoyer un message</p><h2 className="mt-3 font-display text-3xl font-bold">On vous écoute.</h2></div><MessageCircle className="text-[#50c5c3]" size={30} strokeWidth={1.3} /></div>{sent ? <div className="mt-12 rounded-2xl bg-[#50c5c3]/20 p-6" data-testid="status-support-success"><Check className="text-[#f1e549]" /><p className="mt-3 font-display text-2xl font-bold">Message bien reçu.</p><p className="mt-2 text-sm leading-6 text-[#fffaf1]/65">Notre équipe revient vers vous rapidement. Merci de faire avancer JATEK avec nous.</p><button type="button" onClick={() => { setSent(false); setForm({ name: '', email: '', message: '' }); }} className="mt-5 text-xs font-bold text-[#f1e549] underline underline-offset-4" data-testid="button-support-another">Envoyer un autre message</button></div> : <form onSubmit={submit} className="mt-9 grid gap-5"><label className="grid gap-2 text-xs font-bold text-[#fffaf1]/60">Votre prénom<input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="min-h-12 rounded-xl border border-white/15 bg-white/8 px-4 text-sm font-normal text-white outline-none placeholder:text-white/30 focus:border-[#f1e549]" placeholder="Comment peut-on vous appeler ?" data-testid="input-support-name" /></label><label className="grid gap-2 text-xs font-bold text-[#fffaf1]/60">Votre email<input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="min-h-12 rounded-xl border border-white/15 bg-white/8 px-4 text-sm font-normal text-white outline-none placeholder:text-white/30 focus:border-[#f1e549]" placeholder="vous@exemple.ma" data-testid="input-support-email" /></label><label className="grid gap-2 text-xs font-bold text-[#fffaf1]/60">Votre message<textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={4} className="resize-none rounded-xl border border-white/15 bg-white/8 px-4 py-3 text-sm font-normal text-white outline-none placeholder:text-white/30 focus:border-[#f1e549]" placeholder="Dites-nous tout..." data-testid="input-support-message" /></label><button type="submit" className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#df3f91] text-sm font-extrabold transition-colors hover:bg-[#c92d7c]" data-testid="button-support-submit">Envoyer le message <Send size={15} /></button></form>}</div></div><div className="mt-24 grid gap-8 lg:grid-cols-[.75fr_1.25fr]"><div><p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#df3f91]">Questions fréquentes</p><h2 className="mt-4 font-display text-4xl font-bold tracking-[-.05em] text-[#12494f]">Avant de nous écrire.</h2></div><div className="border-t border-[#12494f]/15">{faqs.map((faq, index) => <div key={faq.question} className="border-b border-[#12494f]/15"><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex w-full items-center justify-between gap-5 py-5 text-left font-display text-lg font-bold text-[#12494f]" aria-expanded={openFaq === index} data-testid={`button-faq-${index}`}><span>{faq.question}</span><ChevronDown size={18} className={`shrink-0 text-[#df3f91] transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></button>{openFaq === index && <p className="faq-content max-w-[680px] pb-5 text-sm leading-7 text-[#12494f]/60" data-testid={`text-faq-answer-${index}`}>{faq.answer}</p>}</div>)}</div></div></div></main><PageFooter /></div>;
 }
 
