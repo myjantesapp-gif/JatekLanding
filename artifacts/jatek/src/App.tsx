@@ -121,6 +121,31 @@ function Logo({ light = false }: { light?: boolean }) {
   );
 }
 
+function OujdaDeliveryIllustration() {
+  return (
+    <svg viewBox="0 0 240 110" className="h-full w-full" role="img" aria-label="Coursier JATEK dans les rues d’Oujda">
+      <rect width="240" height="110" rx="18" fill="#edf0dc" />
+      <path d="M0 82c38-12 72-8 112 2 47 12 80 9 128-6v32H0Z" fill="#12494f" />
+      <path d="M0 87c43-9 77-4 116 5 47 11 79 6 124-8" fill="none" stroke="#f1e549" strokeWidth="3" strokeDasharray="8 7" opacity=".9" />
+      <path d="M12 75V33l25-17 25 17v42Z" fill="#df3f91" />
+      <path d="M18 75V39h38v36" fill="#f7c4d9" opacity=".75" />
+      <path d="M24 75V52c0-8 6-14 13-14s13 6 13 14v23" fill="#12494f" />
+      <path d="M76 70V24l28-18 28 18v46Z" fill="#50c5c3" />
+      <path d="M84 70V34h40v36" fill="#d8dfb0" />
+      <path d="M91 70V50c0-8 6-14 13-14s13 6 13 14v20" fill="#12494f" />
+      <path d="M151 72V39l19-13 19 13v33Z" fill="#f1e549" />
+      <path d="M158 72V47h24v25" fill="#fffaf1" />
+      <circle cx="173" cy="77" r="9" fill="#df3f91" />
+      <circle cx="205" cy="77" r="9" fill="#df3f91" />
+      <path d="M173 77h27l-5-18h-15l-7 10h-8" fill="none" stroke="#12494f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M181 59h12l5 18" fill="none" stroke="#12494f" strokeWidth="3" strokeLinecap="round" />
+      <path d="M184 53h13l6 6-6 4h-13Z" fill="#df3f91" stroke="#12494f" strokeWidth="2" />
+      <circle cx="200" cy="43" r="7" fill="#f1e549" />
+      <path d="M200 39v8M196 43h8" stroke="#12494f" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
   const [location] = useLocation();
@@ -266,17 +291,38 @@ function HeroPhoneMockup() {
         </div>
       </div>
       
-      {/* Floating Badges */}
-      <div className="float-fast absolute -left-10 top-32 z-10 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-3 text-white shadow-[0_20px_40px_rgba(0,0,0,0.15)]">
-        <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-xl bg-[#f1e549] text-[#12494f]"><Clock3 size={18} /></span>
-          <div><p className="font-mono-jatek text-[9px] uppercase tracking-[.15em] opacity-80">Arrivée estimée</p><p className="mt-0.5 text-sm font-extrabold">24 min</p></div>
+      {/* Notifications de suivi — posées à côté de l’écran pour garder les captures lisibles */}
+      <div className="hidden sm:grid absolute -left-28 top-28 z-30 w-[190px] gap-3">
+        <div className="float-fast rounded-[1.25rem] border border-white/20 bg-white/95 p-3 text-[#12494f] shadow-[0_18px_38px_rgba(0,0,0,0.2)]">
+          <div className="flex items-start gap-3">
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#d8dfb0] text-[#12494f]"><Check size={17} strokeWidth={3} /></span>
+            <div className="min-w-0">
+              <p className="font-mono-jatek text-[9px] uppercase tracking-[.12em] text-[#12494f]/55">Commande confirmée</p>
+              <p className="mt-1 truncate text-[12px] font-extrabold">Le Comptoir d’Oujda</p>
+              <p className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-[#50a79a]"><span className="size-1.5 rounded-full bg-[#50c5c3]" /> Préparation en cours</p>
+            </div>
+          </div>
+        </div>
+        <div className="float-fast ml-8 rounded-[1.25rem] border border-[#f1e549]/35 bg-[#f1e549] p-3 text-[#12494f] shadow-[0_18px_38px_rgba(0,0,0,0.18)]" style={{ animationDelay: '1.1s' }}>
+          <div className="flex items-center gap-3">
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#12494f] text-[#f1e549]"><Bike size={17} /></span>
+            <div>
+              <p className="font-mono-jatek text-[9px] uppercase tracking-[.12em] text-[#12494f]/60">En livraison</p>
+              <p className="mt-1 text-[12px] font-extrabold">Arrivée dans 24 min</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="float-slow absolute -right-8 bottom-32 z-10 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-3 text-white shadow-[0_20px_40px_rgba(0,0,0,0.15)]" style={{ animationDelay: '1s' }}>
-        <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-xl bg-[#df3f91] text-white"><Bike size={18} /></span>
-          <div><p className="font-mono-jatek text-[9px] uppercase tracking-[.15em] opacity-80">En chemin</p><p className="mt-0.5 text-sm font-extrabold">Votre commande</p></div>
+      <div className="hidden sm:block absolute -right-24 bottom-20 z-30 w-[190px] overflow-hidden rounded-[1.35rem] border border-white/25 bg-white p-2 shadow-[0_20px_45px_rgba(0,0,0,0.22)]">
+        <div className="overflow-hidden rounded-[1rem] bg-[#edf0dc]">
+          <OujdaDeliveryIllustration />
+        </div>
+        <div className="flex items-center gap-2 px-2 pb-1 pt-2">
+          <MoroccoFlag className="size-4 shrink-0" />
+          <div>
+            <p className="font-mono-jatek text-[8px] uppercase tracking-[.1em] text-[#df3f91]">Livraison locale</p>
+            <p className="text-[11px] font-extrabold text-[#12494f]">Les rues d’Oujda</p>
+          </div>
         </div>
       </div>
     </div>
