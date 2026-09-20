@@ -259,11 +259,11 @@ function HeroPhoneMockup() {
   }, [screenshots.length]);
 
   return (
-    <div className="relative mx-auto w-full max-w-[280px] lg:max-w-[300px] perspective-1000 mt-10 lg:mt-0 z-20">
+    <div className="relative mx-auto w-full max-w-[280px] pb-8 lg:max-w-[300px] perspective-1000 mt-10 lg:mt-0 z-20">
       <div className="absolute -right-3 -top-9 z-30 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#0a2b2f]/75 px-3 py-2 text-[10px] font-extrabold uppercase tracking-[.14em] text-[#f1e549] shadow-lg backdrop-blur-md sm:-right-8">
         <MoroccoFlag className="size-4" /> Oujda · Maroc
       </div>
-      <div className="float-slow relative aspect-[0.48] rounded-[2.8rem] bg-[#fffaf1] shadow-[0_30px_60px_rgba(0,0,0,0.3)] border-[6px] border-[#0a2b2f] overflow-hidden rotate-y-[-10deg] rotate-x-[5deg] transform-gpu">
+      <div className="float-slow relative aspect-[0.5133] rounded-[2.8rem] bg-[#fffaf1] shadow-[0_30px_60px_rgba(0,0,0,0.3)] border-[6px] border-[#0a2b2f] overflow-hidden rotate-y-[-10deg] rotate-x-[5deg] transform-gpu">
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-[#0a2b2f] rounded-b-xl z-30"></div>
         
@@ -274,21 +274,21 @@ function HeroPhoneMockup() {
               key={screenshot.label}
               src={screenshot.src}
               alt={screenshot.label}
-              className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-700 ${activeScreenshot === index ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ${activeScreenshot === index ? 'opacity-100' : 'opacity-0'}`}
             />
           ))}
-          <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center gap-1.5 bg-gradient-to-t from-[#0a2b2f]/70 to-transparent pb-4 pt-12">
-            {screenshots.map((screenshot, index) => (
-              <button
-                key={screenshot.label}
-                type="button"
-                onClick={() => setActiveScreenshot(index)}
-                className={`h-1.5 rounded-full transition-all ${activeScreenshot === index ? 'w-7 bg-[#f1e549]' : 'w-1.5 bg-white/70'}`}
-                aria-label={`Afficher ${screenshot.label}`}
-              />
-            ))}
-          </div>
         </div>
+      </div>
+      <div className="absolute bottom-0 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/20 bg-[#0a2b2f]/75 px-3 py-2 backdrop-blur-md">
+        {screenshots.map((screenshot, index) => (
+          <button
+            key={screenshot.label}
+            type="button"
+            onClick={() => setActiveScreenshot(index)}
+            className={`h-1.5 rounded-full transition-all ${activeScreenshot === index ? 'w-7 bg-[#f1e549]' : 'w-1.5 bg-white/70'}`}
+            aria-label={`Afficher ${screenshot.label}`}
+          />
+        ))}
       </div>
       
       {/* Notifications de suivi — posées à côté de l’écran pour garder les captures lisibles */}
