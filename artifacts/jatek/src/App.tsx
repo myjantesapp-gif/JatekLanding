@@ -2,6 +2,8 @@ import { createContext, type FormEvent, type ReactNode, useContext, useEffect, u
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Phone, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
 import jatekLogo from '@assets/jatek-logo-transparent.png';
+import jatekHomeScreenshot from '@assets/Screenshot_20260920_035429_Jatek_1789923038313.jpg';
+import jatekMapScreenshot from '@assets/Screenshot_20260920_035234_Jatek_1789923038341.jpg';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -218,71 +220,48 @@ function PageFooter() {
 }
 
 function HeroPhoneMockup() {
+  const [activeScreenshot, setActiveScreenshot] = useState(0);
+  const screenshots = [
+    { src: jatekHomeScreenshot, label: 'Accueil JATEK à Oujda' },
+    { src: jatekMapScreenshot, label: 'Adresse de livraison à Oujda' },
+  ];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveScreenshot((current) => (current + 1) % screenshots.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [screenshots.length]);
+
   return (
     <div className="relative mx-auto w-full max-w-[280px] lg:max-w-[300px] perspective-1000 mt-10 lg:mt-0 z-20">
+      <div className="absolute -right-3 -top-9 z-30 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#0a2b2f]/75 px-3 py-2 text-[10px] font-extrabold uppercase tracking-[.14em] text-[#f1e549] shadow-lg backdrop-blur-md sm:-right-8">
+        <MoroccoFlag className="size-4" /> Oujda · Maroc
+      </div>
       <div className="float-slow relative aspect-[0.48] rounded-[2.8rem] bg-[#fffaf1] shadow-[0_30px_60px_rgba(0,0,0,0.3)] border-[6px] border-[#0a2b2f] overflow-hidden rotate-y-[-10deg] rotate-x-[5deg] transform-gpu">
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-[#0a2b2f] rounded-b-xl z-30"></div>
         
-        {/* App UI */}
-        <div className="relative h-full w-full bg-[#f8f6eb] flex flex-col">
-          {/* Header */}
-          <div className="bg-[#df3f91] pt-12 pb-6 rounded-b-[1.5rem] px-5 relative overflow-hidden">
-            <div className="flex justify-between items-center text-white relative z-10">
-               <span className="font-display font-bold text-xl tracking-tight">JATEK</span>
-               <span className="bg-[#12494f] text-[#f1e549] text-[10px] font-bold px-2 py-1 rounded-full">Oujda</span>
-            </div>
-            <div className="mt-4 bg-white/20 rounded-full h-9 flex items-center px-3 backdrop-blur-sm border border-white/30">
-               <Search size={14} className="text-white/80 mr-2" />
-               <span className="text-white/80 text-xs">Où livrons-nous ?</span>
-            </div>
-          </div>
-          
-          {/* Grid Categories */}
-          <div className="flex-1 px-4 py-6">
-            <div className="grid grid-cols-3 gap-3">
-               {[
-                 { color: 'bg-[#f1e549]', icon: Store },
-                 { color: 'bg-[#50c5c3]', icon: ShoppingBag },
-                 { color: 'bg-[#df3f91]', icon: HeartPulse, iconColor: 'text-white' },
-                 { color: 'bg-[#d8dfb0]', icon: Scissors },
-                 { color: 'bg-[#12494f]', icon: Route, iconColor: 'text-[#f1e549]' },
-                 { color: 'bg-white', icon: Sparkles },
-               ].map((item, i) => (
-                 <div key={i} className="flex flex-col items-center gap-1.5">
-                   <div className={`w-14 h-14 rounded-2xl ${item.color} shadow-sm flex items-center justify-center`}>
-                     <item.icon size={20} className={item.iconColor || 'text-[#12494f]'} strokeWidth={2} />
-                   </div>
-                   <div className="h-2 w-10 bg-black/5 rounded-full mt-1"></div>
-                 </div>
-               ))}
-            </div>
-            
-            <div className="mt-8">
-              <div className="flex justify-between items-center mb-4 px-1">
-                 <div className="h-4 w-24 bg-black/10 rounded-full"></div>
-                 <div className="h-3 w-12 bg-black/5 rounded-full"></div>
-              </div>
-              <div className="flex gap-3 overflow-hidden">
-                <div className="min-w-[130px] h-32 bg-white rounded-2xl shadow-sm p-4 flex flex-col justify-end relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-[#f1e549]/20 rounded-bl-[2rem]"></div>
-                  <div className="h-3 w-20 bg-black/10 rounded-full mb-2"></div>
-                  <div className="h-2 w-12 bg-[#df3f91]/50 rounded-full"></div>
-                </div>
-                <div className="min-w-[130px] h-32 bg-white rounded-2xl shadow-sm p-4 flex flex-col justify-end relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-[#50c5c3]/20 rounded-bl-[2rem]"></div>
-                  <div className="h-3 w-20 bg-black/10 rounded-full mb-2"></div>
-                  <div className="h-2 w-12 bg-[#df3f91]/50 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Bottom Nav */}
-          <div className="h-16 bg-white border-t border-black/5 flex justify-between items-center px-6 shadow-[0_-5px_15px_rgba(0,0,0,0.03)] pb-2 pt-2">
-             <div className="h-10 w-10 rounded-full bg-[#12494f]/10 flex items-center justify-center text-[#12494f]"><Store size={18} /></div>
-             <div className="h-10 w-10 rounded-full flex items-center justify-center text-black/30"><Search size={18} /></div>
-             <div className="h-10 w-10 rounded-full flex items-center justify-center text-black/30"><User size={18} /></div>
+        {/* Real JATEK app screens */}
+        <div className="relative h-full w-full bg-[#f8f6eb]">
+          {screenshots.map((screenshot, index) => (
+            <img
+              key={screenshot.label}
+              src={screenshot.src}
+              alt={screenshot.label}
+              className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-700 ${activeScreenshot === index ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ))}
+          <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center gap-1.5 bg-gradient-to-t from-[#0a2b2f]/70 to-transparent pb-4 pt-12">
+            {screenshots.map((screenshot, index) => (
+              <button
+                key={screenshot.label}
+                type="button"
+                onClick={() => setActiveScreenshot(index)}
+                className={`h-1.5 rounded-full transition-all ${activeScreenshot === index ? 'w-7 bg-[#f1e549]' : 'w-1.5 bg-white/70'}`}
+                aria-label={`Afficher ${screenshot.label}`}
+              />
+            ))}
           </div>
         </div>
       </div>
