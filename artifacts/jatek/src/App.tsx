@@ -50,6 +50,15 @@ function MoroccanStarIcon({ className }: { className?: string }) {
   );
 }
 
+function MoroccoFlag({ className = 'size-6' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 22" className={className} role="img" aria-label="Drapeau du Maroc">
+      <rect width="32" height="22" rx="2" fill="#c1272d" />
+      <path d="m16 4.5 1.5 4.7h4.9l-4 2.9 1.5 4.7-3.9-2.9-3.9 2.9 1.5-4.7-4-2.9h4.9L16 4.5Z" fill="none" stroke="#006233" strokeWidth="1.25" />
+    </svg>
+  );
+}
+
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className="group inline-flex items-center gap-2.5" data-testid="link-logo">
@@ -252,7 +261,7 @@ function Hero() {
       <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 mt-6">
         <div className="max-w-[650px] z-10">
           <div className="reveal-up inline-flex items-center gap-2 rounded-full border border-[#f1e549]/40 bg-[#f1e549]/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[.17em] text-[#f1e549]">
-            <span className="size-1.5 rounded-full bg-[#f1e549]" /> Le meilleur d'Oujda
+            <MoroccoFlag className="size-5" /> Le meilleur d'Oujda
           </div>
           <h1 className="reveal-up reveal-delay-1 mt-7 max-w-[700px] font-display text-[clamp(3.5rem,7vw,6.5rem)] font-bold leading-[.9] tracking-[-.06em]">
             Ce que vous aimez.<br />
@@ -656,8 +665,8 @@ function CookiesPage() {
 function SupportPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const submit = (event: FormEvent) => { event.preventDefault(); const body = `Bonjour JATEK,\n\nNom : ${form.name}\nEmail : ${form.email}\n\n${form.message}\n\nEnvoyé depuis le centre de support JATEK.`; window.location.href = `mailto:contact@jatek.app?subject=${encodeURIComponent('Support JATEK — demande de contact')}&body=${encodeURIComponent(body)}`; setSent(true); };
+  const [form, setForm] = useState({ name: '', email: '', subject: 'Commande et livraison', message: '' });
+  const submit = (event: FormEvent) => { event.preventDefault(); const body = `Bonjour JATEK,\n\nNom : ${form.name}\nEmail : ${form.email}\nSujet : ${form.subject}\n\n${form.message}\n\nEnvoyé depuis le centre de support JATEK.`; window.location.href = `mailto:contact@jatek.app?subject=${encodeURIComponent(`Support JATEK — ${form.subject}`)}&body=${encodeURIComponent(body)}`; setSent(true); };
   
   return (
     <div className="site-shell min-h-screen bg-[#fffaf1]">
@@ -700,7 +709,7 @@ function SupportPage() {
                   <div className="w-16 h-16 bg-[#f1e549] rounded-2xl flex items-center justify-center text-[#12494f] mb-6"><Check size={28} /></div>
                   <p className="font-display text-3xl font-bold">Message bien reçu.</p>
                   <p className="mt-3 text-base leading-7 text-[#fffaf1]/80">Notre équipe revient vers vous rapidement. Merci de faire avancer JATEK avec nous.</p>
-                  <button type="button" onClick={() => { setSent(false); setForm({ name: '', email: '', message: '' }); }} className="mt-8 text-sm font-bold text-[#f1e549] underline underline-offset-4" data-testid="button-support-another">Envoyer un autre message</button>
+                  <button type="button" onClick={() => { setSent(false); setForm({ name: '', email: '', subject: 'Commande et livraison', message: '' }); }} className="mt-8 text-sm font-bold text-[#f1e549] underline underline-offset-4" data-testid="button-support-another">Envoyer un autre message</button>
                 </div>
               ) : (
                 <form onSubmit={submit} className="relative z-10 mt-10 grid gap-6">
@@ -709,6 +718,15 @@ function SupportPage() {
                   </label>
                   <label className="grid gap-2 text-sm font-bold text-[#fffaf1]/70">Votre email
                     <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="min-h-[56px] rounded-xl border border-white/20 bg-white/5 px-5 text-base font-normal text-white outline-none placeholder:text-white/30 focus:border-[#f1e549] focus:bg-white/10 transition-all" placeholder="vous@exemple.ma" data-testid="input-support-email" />
+                  </label>
+                  <label className="grid gap-2 text-sm font-bold text-[#fffaf1]/70">Sujet de votre demande
+                    <select value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} className="min-h-[56px] rounded-xl border border-white/20 bg-[#12494f] px-5 text-base font-normal text-white outline-none focus:border-[#f1e549] focus:bg-white/10 transition-all" data-testid="select-support-subject">
+                      <option>Commande et livraison</option>
+                      <option>Problème technique</option>
+                      <option>Devenir partenaire</option>
+                      <option>Données personnelles / RGPD</option>
+                      <option>Autre demande</option>
+                    </select>
                   </label>
                   <label className="grid gap-2 text-sm font-bold text-[#fffaf1]/70">Votre message
                     <textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5} className="resize-none rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-base font-normal text-white outline-none placeholder:text-white/30 focus:border-[#f1e549] focus:bg-white/10 transition-all" placeholder="Dites-nous tout..." data-testid="input-support-message" />
