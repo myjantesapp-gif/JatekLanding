@@ -1,4 +1,4 @@
-import { type FormEvent, type ReactNode, useState } from 'react';
+import { createContext, type FormEvent, type ReactNode, useContext, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Phone, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
 import jatekLogo from '@assets/jatek-logo-transparent.png';
@@ -11,6 +11,56 @@ import { Link, Route as WouterRoute, Switch, useLocation, Router as WouterRouter
 const queryClient = new QueryClient();
 
 type IconType = typeof Store;
+type Locale = 'fr' | 'ar';
+
+const LocaleContext = createContext<{ locale: Locale; setLocale: (locale: Locale) => void }>({
+  locale: 'fr',
+  setLocale: () => undefined,
+});
+
+function useLocale() {
+  return useContext(LocaleContext);
+}
+
+function LocaleProvider({ children }: { children: ReactNode }) {
+  const [locale, setLocale] = useState<Locale>('fr');
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
+  }, [locale]);
+  return <LocaleContext.Provider value={{ locale, setLocale }}><div className={locale === 'ar' ? 'language-ar' : 'language-fr'} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>{children}</div></LocaleContext.Provider>;
+}
+
+const localeCopy = {
+  fr: {
+    navUniverse: 'L’univers JATEK',
+    navHow: 'Comment ça marche',
+    navPartner: 'Devenir partenaire',
+    support: 'Besoin d’aide ?',
+    join: 'Rejoindre JATEK',
+    badge: 'Le meilleur d’Oujda',
+    title: 'Ce que vous aimez.',
+    accent: 'À deux rues.',
+    body: 'JATEK rassemble les bonnes adresses d’Oujda dans une seule app. Un repas, les courses, la pharmacie — commandés simplement, livrés par quelqu’un du quartier.',
+    discover: 'Télécharger l’app',
+    heroPartner: 'Devenir partenaire',
+    proof: 'Déjà adopté par des centaines d’Oujdis',
+  },
+  ar: {
+    navUniverse: 'عالم JATEK',
+    navHow: 'كيف تعمل الخدمة',
+    navPartner: 'انضم كشريك',
+    support: 'تحتاج إلى المساعدة؟',
+    join: 'انضم إلى JATEK',
+    badge: 'الأفضل من وجدة',
+    title: 'كل ما تحب.',
+    accent: 'على بُعد شارعين.',
+    body: 'تجمع JATEK أفضل عناوين وجدة في تطبيق واحد. وجبة أو مشتريات أو صيدلية — اطلب بسهولة واستلمها من شخص يعرف الحي.',
+    discover: 'حمّل التطبيق',
+    heroPartner: 'انضم كشريك',
+    proof: 'اختارها مئات الوجديين',
+  },
+};
 
 const categories: { name: string; detail: string; icon: IconType; color: string }[] = [
   { name: 'À manger', detail: 'Les tables qui font Oujda', icon: Store, color: 'bg-[#f1e549]' },
@@ -72,11 +122,13 @@ function Logo({ light = false }: { light?: boolean }) {
 function Header() {
   const [open, setOpen] = useState(false);
   const [location] = useLocation();
+  const { locale, setLocale } = useLocale();
+  const labels = localeCopy[locale];
   const isHome = location === '/';
   const links = [
-    { href: '/#univers', label: 'L’univers JATEK' },
-    { href: '/#comment', label: 'Comment ça marche' },
-    { href: '/devenir-partenaire', label: 'Devenir partenaire' },
+    { href: '/#univers', label: labels.navUniverse },
+    { href: '/#comment', label: labels.navHow },
+    { href: '/devenir-partenaire', label: labels.navPartner },
   ];
   return (
     <header className="absolute left-0 right-0 top-0 z-50">
@@ -90,9 +142,10 @@ function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-5 md:flex">
-          <Link href="/support" className={`text-[13px] font-bold transition-colors hover:text-[#df3f91] ${isHome ? 'text-white' : 'text-[#12494f]'}`} data-testid="link-nav-support">Besoin d’aide ?</Link>
+          <Link href="/support" className={`text-[13px] font-bold transition-colors hover:text-[#df3f91] ${isHome ? 'text-white' : 'text-[#12494f]'}`} data-testid="link-nav-support">{labels.support}</Link>
+          <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-[12px] font-bold transition-colors hover:border-[#df3f91] hover:text-[#df3f91] ${isHome ? 'border-white/25 text-white' : 'border-[#12494f]/15 text-[#12494f]'}`} aria-label={locale === 'fr' ? 'Passer en arabe' : 'Passer en français'} data-testid="button-language-toggle"><MoroccoFlag className="size-4" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
           <Link href="/devenir-partenaire" className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-extrabold transition-all hover:-translate-y-0.5 ${isHome ? 'bg-[#f1e549] text-[#12494f] hover:shadow-[0_5px_15px_rgba(241,229,73,0.3)]' : 'bg-[#df3f91] text-white hover:bg-[#c92d7c]'}`} data-testid="link-nav-partner">
-            Rejoindre JATEK <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            {labels.join} <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
         <button type="button" onClick={() => setOpen(!open)} className={`grid size-12 place-items-center rounded-full md:hidden transition-colors ${isHome ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-[#12494f]/5 text-[#12494f] hover:bg-[#12494f]/10'}`} aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'} data-testid="button-mobile-menu">
@@ -107,8 +160,9 @@ function Header() {
               <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid={`link-mobile-${link.label.toLowerCase().replaceAll(' ', '-')}`}>{link.label}</Link>
             ))}
             <div className="h-px w-full bg-[#12494f]/10 my-2"></div>
-            <Link href="/support" onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="link-mobile-support">Besoin d’aide ?</Link>
-            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="mt-4 flex items-center justify-between rounded-2xl bg-[#df3f91] px-6 py-4 text-base font-extrabold text-white shadow-md" data-testid="link-mobile-partner">Rejoindre JATEK <ArrowUpRight size={20} /></Link>
+            <Link href="/support" onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="link-mobile-support">{labels.support}</Link>
+            <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className="flex items-center gap-3 rounded-2xl px-5 py-4 text-left text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="button-mobile-language-toggle"><MoroccoFlag className="size-5" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
+            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="mt-4 flex items-center justify-between rounded-2xl bg-[#df3f91] px-6 py-4 text-base font-extrabold text-white shadow-md" data-testid="link-mobile-partner">{labels.join} <ArrowUpRight size={20} /></Link>
           </nav>
         </div>
       )}
@@ -251,6 +305,8 @@ function HeroPhoneMockup() {
 }
 
 function Hero() {
+  const { locale } = useLocale();
+  const labels = localeCopy[locale];
   return (
     <section className="clip-slant-bottom relative min-h-[820px] overflow-hidden bg-[#12494f] px-5 pb-32 pt-36 text-[#fffaf1] sm:px-8 lg:min-h-[880px]">
       {/* Moroccan Geometric Background Patterns */}
@@ -261,21 +317,21 @@ function Hero() {
       <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 mt-6">
         <div className="max-w-[650px] z-10">
           <div className="reveal-up inline-flex items-center gap-2 rounded-full border border-[#f1e549]/40 bg-[#f1e549]/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[.17em] text-[#f1e549]">
-            <MoroccoFlag className="size-5" /> Le meilleur d'Oujda
+            <MoroccoFlag className="size-5 flag-pulse" /> {labels.badge}
           </div>
           <h1 className="reveal-up reveal-delay-1 mt-7 max-w-[700px] font-display text-[clamp(3.5rem,7vw,6.5rem)] font-bold leading-[.9] tracking-[-.06em]">
-            Ce que vous aimez.<br />
-            <span className="text-[#f1e549]">À deux rues.</span>
+            {labels.title}<br />
+            <span className="text-[#f1e549]">{labels.accent}</span>
           </h1>
           <p className="reveal-up reveal-delay-2 mt-8 max-w-[470px] text-[17px] leading-7 text-[#fffaf1]/80">
-            JATEK rassemble les bonnes adresses d'Oujda dans une seule app. Un repas, les courses, la pharmacie — commandés simplement, livrés par quelqu'un du quartier.
+            {labels.body}
           </p>
           <div className="reveal-up reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row">
             <button type="button" onClick={() => document.getElementById('univers')?.scrollIntoView({ behavior: 'smooth' })} className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#df3f91] px-8 py-4 text-sm font-extrabold text-white transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(223,63,145,0.4)] hover:bg-[#c92d7c]" data-testid="button-discover">
-              Télécharger l'app <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              {labels.discover} <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </button>
             <Link href="/devenir-partenaire" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/25 bg-white/5 backdrop-blur-sm px-6 py-4 text-sm font-bold text-[#fffaf1] transition-all hover:bg-white/10 hover:border-[#f1e549] hover:text-[#f1e549]" data-testid="link-hero-partner">
-              Devenir partenaire <ArrowUpRight size={16} />
+              {labels.heroPartner} <ArrowUpRight size={16} />
             </Link>
           </div>
           
@@ -283,7 +339,7 @@ function Hero() {
             <span className="flex -space-x-2">
               {['YK', 'SA', 'NA'].map((initials, i) => <span key={initials} className={`grid size-8 place-items-center rounded-full border-2 border-[#12494f] text-[9px] font-extrabold text-[#12494f] ${i === 0 ? 'bg-[#f1e549]' : i === 1 ? 'bg-[#50c5c3]' : 'bg-[#df3f91]'}`}>{initials}</span>)}
             </span>
-            <span>Déjà adopté par des centaines d'Oujdis</span>
+            <span>{labels.proof}</span>
           </div>
         </div>
         
@@ -643,6 +699,9 @@ function LegalDetailsPage() {
         <article className="grid gap-12 text-[#12494f]">
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Éditeur du site</h2><p className="text-base leading-8 text-[#12494f]/70">JATEK est une marque de livraison locale en cours de déploiement à Oujda, Maroc. Le site est édité par JATEK et s’adresse en priorité aux habitants et commerces d’Oujda.</p></section>
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Nous contacter</h2><p className="text-base leading-8 text-[#12494f]/70">Email : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a><br />Téléphone : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="tel:+212536000000">+212 5 36 00 00 00</a></p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Hébergement</h2><p className="text-base leading-8 text-[#12494f]/70">Le site est hébergé sur l’infrastructure Hostinger utilisée pour le plan Cloud Startup. Les informations contractuelles exactes de l’éditeur et de l’hébergeur devront être complétées avec les coordonnées figurant dans les contrats avant la mise en ligne commerciale.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Propriété intellectuelle</h2><p className="text-base leading-8 text-[#12494f]/70">La marque JATEK, son identité visuelle, ses textes, illustrations et éléments graphiques sont protégés. Toute reproduction ou utilisation sans autorisation préalable est interdite.</p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Données personnelles</h2><p className="text-base leading-8 text-[#12494f]/70">Pour comprendre les données traitées et exercer vos droits, consultez notre <Link className="font-bold text-[#df3f91] underline underline-offset-4" href="/confidentialite">politique RGPD</Link>.</p></section>
         </article>
       </div>
     </SimplePage>
@@ -898,14 +957,16 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <LocaleProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LocaleProvider>
   );
 }
 

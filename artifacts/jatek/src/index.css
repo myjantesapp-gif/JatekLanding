@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -12,6 +12,7 @@
   --font-sans: 'Manrope', sans-serif;
   --font-serif: 'Space Grotesk', sans-serif;
   --font-mono: 'DM Mono', monospace;
+  --font-arabic: 'Noto Sans Arabic', 'Noto Kufi Arabic', sans-serif;
   
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -76,11 +77,26 @@
 @layer utilities {
   .font-display { font-family: var(--font-serif); }
   .font-mono-jatek { font-family: var(--font-mono); }
+  .font-arabic { font-family: var(--font-arabic); }
   .text-balance { text-wrap: balance; }
   .clip-slant-bottom { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
   .clip-slant-top { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%); }
   .perspective-1000 { perspective: 1000px; }
   .preserve-3d { transform-style: preserve-3d; }
+  .language-ar { font-family: var(--font-arabic); }
+  .language-ar .font-display { font-family: var(--font-arabic); }
+  .language-ar .font-mono-jatek { font-family: var(--font-arabic); }
+  .moroccan-tile {
+    background-image:
+      linear-gradient(30deg, rgba(241,229,73,.18) 12%, transparent 12.5%, transparent 87%, rgba(241,229,73,.18) 87.5%, rgba(241,229,73,.18)),
+      linear-gradient(150deg, rgba(241,229,73,.18) 12%, transparent 12.5%, transparent 87%, rgba(241,229,73,.18) 87.5%, rgba(241,229,73,.18)),
+      linear-gradient(30deg, rgba(241,229,73,.18) 12%, transparent 12.5%, transparent 87%, rgba(241,229,73,.18) 87.5%, rgba(241,229,73,.18)),
+      linear-gradient(150deg, rgba(241,229,73,.18) 12%, transparent 12.5%, transparent 87%, rgba(241,229,73,.18) 87.5%, rgba(241,229,73,.18)),
+      linear-gradient(60deg, rgba(80,197,195,.14) 25%, transparent 25.5%, transparent 75%, rgba(80,197,195,.14) 75%);
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0;
+    background-size: 40px 70px;
+  }
+  .flag-pulse { animation: flag-pulse 3s ease-in-out infinite; transform-origin: center; }
   .noise-overlay::after {
     content: '';
     position: fixed;
@@ -124,6 +140,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@keyframes flag-pulse { 0%, 100% { transform: rotate(-2deg) scale(1); } 50% { transform: rotate(2deg) scale(1.06); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
