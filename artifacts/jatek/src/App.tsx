@@ -159,37 +159,37 @@ function Header() {
   ];
   return (
     <header className="absolute left-0 right-0 top-0 z-50">
-      <div className={`nav-wrap mx-auto mt-6 flex max-w-[1240px] items-center justify-between rounded-full px-6 py-4 transition-all duration-300 ${isHome ? 'bg-white/10 border border-white/20 backdrop-blur-md' : 'bg-white/90 border border-[#12494f]/10 backdrop-blur-md shadow-sm'} sm:px-8 mx-5 sm:mx-8 xl:mx-auto`}>
+      <div className="nav-wrap mx-auto mt-6 flex max-w-[1240px] items-center justify-between rounded-full border border-white/20 bg-[#ec0f73] px-6 py-4 shadow-[0_12px_30px_rgba(236,15,115,.24)] transition-all duration-500 hover:shadow-[0_16px_38px_rgba(236,15,115,.34)] sm:px-8 mx-5 sm:mx-8 xl:mx-auto">
         <Logo light={isHome} />
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-             <Link key={link.href} href={link.href} className={`text-[13px] font-bold tracking-wide transition-colors hover:text-[#df3f91] ${isHome ? 'text-white' : 'text-[#12494f]'}`} data-testid={`link-nav-${link.label.toLowerCase().replaceAll(' ', '-')}`}>
+             <Link key={link.href} href={link.href} className="text-[13px] font-bold tracking-wide text-white transition-colors hover:-translate-y-0.5 hover:text-[#f1e549]" data-testid={`link-nav-${link.label.toLowerCase().replaceAll(' ', '-')}`}>
                {link.label}
              </Link>
           ))}
         </nav>
         <div className="hidden items-center gap-5 md:flex">
-          <Link href="/support" className={`text-[13px] font-bold transition-colors hover:text-[#df3f91] ${isHome ? 'text-white' : 'text-[#12494f]'}`} data-testid="link-nav-support">{labels.support}</Link>
-          <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-[12px] font-bold transition-colors hover:border-[#df3f91] hover:text-[#df3f91] ${isHome ? 'border-white/25 text-white' : 'border-[#12494f]/15 text-[#12494f]'}`} aria-label={locale === 'fr' ? 'Passer en arabe' : 'Passer en français'} data-testid="button-language-toggle"><MoroccoFlag className="size-4" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
-          <Link href="/devenir-partenaire" className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-extrabold transition-all hover:-translate-y-0.5 ${isHome ? 'bg-[#f1e549] text-[#12494f] hover:shadow-[0_5px_15px_rgba(241,229,73,0.3)]' : 'bg-[#ec0f73] text-white hover:bg-[#d70862]'} ${!isHome ? 'magenta-glow' : ''}`} data-testid="link-nav-partner">
+          <Link href="/support" className="text-[13px] font-bold text-white transition-colors hover:-translate-y-0.5 hover:text-[#f1e549]" data-testid="link-nav-support">{labels.support}</Link>
+          <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-2 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:border-[#f1e549] hover:text-[#f1e549]" aria-label={locale === 'fr' ? 'Passer en arabe' : 'Passer en français'} data-testid="button-language-toggle"><MoroccoFlag className="size-4" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
+          <Link href="/devenir-partenaire" className="group inline-flex items-center gap-2 rounded-full bg-[#f1e549] px-5 py-2.5 text-[13px] font-extrabold text-[#12494f] transition-all hover:-translate-y-0.5 hover:bg-[#fff36b] hover:shadow-[0_5px_18px_rgba(241,229,73,.45)]" data-testid="link-nav-partner">
             {labels.join} <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
-        <button type="button" onClick={() => setOpen(!open)} className={`grid size-12 place-items-center rounded-full md:hidden transition-colors ${isHome ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-[#12494f]/5 text-[#12494f] hover:bg-[#12494f]/10'}`} aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'} data-testid="button-mobile-menu">
+        <button type="button" onClick={() => setOpen(!open)} className="grid size-12 place-items-center rounded-full bg-white/15 text-white transition-all hover:scale-105 hover:bg-white/25 md:hidden" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'} data-testid="button-mobile-menu">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
       
       {open && (
-        <div className="mx-5 mt-3 rounded-3xl border border-[#12494f]/10 bg-white p-6 shadow-2xl md:hidden animate-in fade-in slide-in-from-top-4">
+        <div className="mx-5 mt-3 rounded-3xl border border-white/20 bg-[#ec0f73] p-6 text-white shadow-2xl md:hidden animate-in fade-in slide-in-from-top-4">
           <nav className="grid gap-2">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid={`link-mobile-${link.label.toLowerCase().replaceAll(' ', '-')}`}>{link.label}</Link>
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-white transition-colors hover:bg-white/15 hover:text-[#f1e549]" data-testid={`link-mobile-${link.label.toLowerCase().replaceAll(' ', '-')}`}>{link.label}</Link>
             ))}
-            <div className="h-px w-full bg-[#12494f]/10 my-2"></div>
-            <Link href="/support" onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="link-mobile-support">{labels.support}</Link>
-            <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className="flex items-center gap-3 rounded-2xl px-5 py-4 text-left text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="button-mobile-language-toggle"><MoroccoFlag className="size-5" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
-            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="magenta-glow mt-4 flex items-center justify-between rounded-2xl bg-[#ec0f73] px-6 py-4 text-base font-extrabold text-white shadow-md" data-testid="link-mobile-partner">{labels.join} <ArrowUpRight size={20} /></Link>
+            <div className="my-2 h-px w-full bg-white/20"></div>
+            <Link href="/support" onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-white transition-colors hover:bg-white/15 hover:text-[#f1e549]" data-testid="link-mobile-support">{labels.support}</Link>
+            <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className="flex items-center gap-3 rounded-2xl px-5 py-4 text-left text-base font-bold text-white transition-colors hover:bg-white/15 hover:text-[#f1e549]" data-testid="button-mobile-language-toggle"><MoroccoFlag className="size-5" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
+            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="mt-4 flex items-center justify-between rounded-2xl bg-[#f1e549] px-6 py-4 text-base font-extrabold text-[#12494f] shadow-md transition-transform hover:-translate-y-1" data-testid="link-mobile-partner">{labels.join} <ArrowUpRight size={20} /></Link>
           </nav>
         </div>
       )}
