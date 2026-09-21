@@ -444,7 +444,7 @@ function ExpansionMapSection() {
     { name: 'Agadir', left: '37%', top: '49%', current: false, labelSide: 'right' },
     { name: 'Laâyoune', left: '28%', top: '62%', current: false, labelSide: 'right' },
     { name: 'Dakhla', left: '12%', top: '80%', current: false, labelSide: 'right' },
-    { name: 'Oujda', left: '86%', top: '23%', current: true, labelSide: 'left' },
+    { name: 'Oujda', left: '80%', top: '24%', current: true, labelSide: 'left' },
   ];
 
   return (
