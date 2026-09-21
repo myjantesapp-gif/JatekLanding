@@ -392,8 +392,9 @@ function MarqueeBand() {
 
 function UniversSection() {
   return (
-    <section id="univers" className="relative bg-[#fffaf1] px-5 py-24 sm:px-8 lg:py-36 overflow-hidden">
+      <section id="univers" className="relative bg-[#fffaf1] px-5 py-24 sm:px-8 lg:py-36 overflow-hidden">
       <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-[#f1e549]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -left-32 bottom-0 size-[360px] rounded-full bg-[#ec0f73]/10 blur-[100px] pointer-events-none" />
       <div className="mx-auto max-w-[1240px] relative z-10">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="reveal-up">
@@ -412,7 +413,7 @@ function UniversSection() {
         
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map(({ name, detail, icon: Icon, color }, i) => (
-            <Link key={name} href="/support" className="reveal-up category-card group relative min-h-[280px] overflow-hidden rounded-[2rem] border border-[#12494f]/5 bg-white p-7 text-[#12494f] shadow-[0_15px_40px_rgba(18,73,79,.04)] transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(18,73,79,.1)]" style={{ animationDelay: `${0.1 * (i + 1)}s` }} data-testid={`card-category-${i}`}>
+            <Link key={name} href="/support" className="reveal-up magenta-hover category-card group relative min-h-[280px] overflow-hidden rounded-[2rem] border border-[#12494f]/5 bg-white p-7 text-[#12494f] shadow-[0_15px_40px_rgba(18,73,79,.04)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(18,73,79,.1)]" style={{ animationDelay: `${0.1 * (i + 1)}s` }} data-testid={`card-category-${i}`}>
               <span className={`grid size-16 place-items-center rounded-2xl ${color} shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6`}><Icon size={28} strokeWidth={2} className={color === 'bg-[#f1e549]' || color === 'bg-[#d8dfb0]' ? 'text-[#12494f]' : 'text-white'} /></span>
               
               <div className="mt-16 relative z-10">
@@ -458,7 +459,7 @@ function ExpansionMapSection() {
 
         <div className="relative mx-auto w-full max-w-[570px] reveal-up reveal-delay-1">
           <div className="moroccan-tile absolute inset-0 rounded-[2.5rem] opacity-20" />
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-[#fffaf1] p-5 shadow-[0_25px_70px_rgba(0,0,0,.22)] sm:p-8">
+            <div className="magenta-orbit relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-[#fffaf1] p-5 shadow-[0_25px_70px_rgba(0,0,0,.22)] sm:p-8">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-mono-jatek text-[10px] font-bold uppercase tracking-[.18em] text-[#df3f91]">La carte JATEK</p>
@@ -595,7 +596,7 @@ function HowItWorks() {
 
 function LocalProof() {
   return (
-    <section className="relative overflow-hidden bg-[#df3f91] px-5 py-24 text-[#fffaf1] sm:px-8 lg:py-36">
+    <section className="relative overflow-hidden bg-[#ec0f73] px-5 py-24 text-[#fffaf1] sm:px-8 lg:py-36">
       <MoroccanPattern className="absolute -right-32 -top-32 w-[700px] text-[#f1e549] opacity-10 animate-spin-slow" />
       <MoroccanPattern className="absolute -left-20 -bottom-20 w-[500px] text-[#12494f] opacity-15" />
       
@@ -615,22 +616,22 @@ function LocalProof() {
           </div>
           
           <div className="grid grid-cols-2 gap-4 sm:gap-6">
-            <div className="reveal-up group rounded-[2.5rem] bg-[#12494f] p-8 transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl">
+            <div className="reveal-up magenta-hover group rounded-[2.5rem] bg-[#12494f] p-8">
               <MapPin size={32} className="text-[#f1e549] transition-transform duration-500 group-hover:scale-125 group-hover:-rotate-12" />
               <p className="mt-12 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">Oujda</p>
               <p className="mt-2 text-sm text-[#fffaf1]/70">notre point de départ</p>
             </div>
-            <div className="reveal-up group mt-8 rounded-[2.5rem] bg-[#f1e549] p-8 text-[#12494f] transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.1s' }}>
+            <div className="reveal-up magenta-hover group mt-8 rounded-[2.5rem] bg-[#f1e549] p-8 text-[#12494f]" style={{ animationDelay: '0.1s' }}>
               <Users size={32} className="text-[#df3f91] transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12" />
               <p className="mt-12 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">+120</p>
               <p className="mt-2 text-sm text-[#12494f]/70">adresses à découvrir</p>
             </div>
-            <div className="reveal-up group rounded-[2.5rem] border-2 border-white/20 p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:bg-white/10" style={{ animationDelay: '0.2s' }}>
+            <div className="reveal-up magenta-hover group rounded-[2.5rem] border-2 border-white/20 p-8 backdrop-blur-sm" style={{ animationDelay: '0.2s' }}>
               <Bike size={32} className="text-[#50c5c3] transition-transform duration-500 group-hover:translate-x-4" />
               <p className="mt-12 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">24<span className="text-2xl text-white/50 ml-1">min</span></p>
               <p className="mt-2 text-sm text-[#fffaf1]/80">en moyenne</p>
             </div>
-            <div className="reveal-up group mt-8 rounded-[2.5rem] bg-[#50c5c3] p-8 text-[#12494f] transition-transform duration-500 hover:-translate-y-2 hover:shadow-2xl" style={{ animationDelay: '0.3s' }}>
+            <div className="reveal-up magenta-hover group mt-8 rounded-[2.5rem] bg-[#50c5c3] p-8 text-[#12494f]" style={{ animationDelay: '0.3s' }}>
               <BadgeCheck size={32} className="text-white transition-transform duration-500 group-hover:scale-125" />
               <p className="mt-12 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">100%</p>
               <p className="mt-2 text-sm text-[#12494f]/70">équipe locale</p>
