@@ -436,15 +436,15 @@ function UniversSection() {
 }
 
 function ExpansionMapSection() {
-  const mapCities = [
-    { name: 'Tanger', left: '70%', top: '8%', current: false, labelSide: 'right' },
-    { name: 'Rabat', left: '59%', top: '22%', current: false, labelSide: 'right' },
-    { name: 'Casablanca', left: '53%', top: '29%', current: false, labelSide: 'right' },
-    { name: 'Marrakech', left: '46%', top: '40%', current: false, labelSide: 'right' },
-    { name: 'Agadir', left: '37%', top: '49%', current: false, labelSide: 'right' },
-    { name: 'Laâyoune', left: '28%', top: '62%', current: false, labelSide: 'right' },
-    { name: 'Dakhla', left: '12%', top: '80%', current: false, labelSide: 'right' },
-    { name: 'Oujda', left: '80%', top: '24%', current: true, labelSide: 'left' },
+  const mapMarkers = [
+    { left: '70%', top: '8%', current: false },
+    { left: '59%', top: '22%', current: false },
+    { left: '53%', top: '29%', current: false },
+    { left: '46%', top: '40%', current: false },
+    { left: '37%', top: '49%', current: false },
+    { left: '28%', top: '62%', current: false },
+    { left: '12%', top: '80%', current: false },
+    { left: '80%', top: '24%', current: true },
   ];
 
   return (
@@ -483,17 +483,14 @@ function ExpansionMapSection() {
               <img src={moroccoRegionsMap} alt="Carte régionale complète du Maroc, du nord jusqu’au Sahara" className="absolute inset-0 h-full w-full object-contain" />
               <div className="moroccan-tile pointer-events-none absolute inset-0 opacity-20 mix-blend-multiply" />
               <div className="absolute inset-0" aria-label="Villes de déploiement JATEK">
-                {mapCities.map((city, index) => (
+                {mapMarkers.map((marker, index) => (
                   <div
-                    key={city.name}
+                    key={`${marker.left}-${marker.top}`}
                     className="absolute"
-                    style={{ left: city.left, top: city.top, animationDelay: `${index * 0.18}s` }}
+                    style={{ left: marker.left, top: marker.top, animationDelay: `${index * 0.18}s` }}
                   >
-                    <span className={`magenta-glow absolute left-0 top-0 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[3px] border-[#fffaf1] shadow-[0_5px_15px_rgba(18,73,79,.2)] sm:size-7 ${city.current ? 'bg-[#f1e549]' : 'bg-[#50c5c3]'}`}>
-                      <span className={`size-1.5 rounded-full sm:size-2 ${city.current ? 'bg-[#ec0f73]' : 'bg-[#12494f]'}`} />
-                    </span>
-                    <span className={`absolute top-0 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#fffaf1]/90 px-1.5 py-0.5 text-[9px] font-extrabold text-[#12494f] shadow-sm backdrop-blur-[2px] sm:px-2 sm:text-[11px] ${city.labelSide === 'left' ? 'right-3 translate-x-[-100%]' : 'left-3'} ${city.current ? 'text-[#ec0f73]' : ''}`}>
-                      {city.name}
+                    <span aria-hidden="true" className={`magenta-glow absolute left-0 top-0 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[3px] border-[#fffaf1] shadow-[0_5px_15px_rgba(18,73,79,.2)] sm:size-7 ${marker.current ? 'bg-[#f1e549]' : 'bg-[#50c5c3]'}`}>
+                      <span className={`size-1.5 rounded-full sm:size-2 ${marker.current ? 'bg-[#ec0f73]' : 'bg-[#12494f]'}`} />
                     </span>
                   </div>
                 ))}
