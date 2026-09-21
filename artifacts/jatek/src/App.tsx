@@ -721,6 +721,7 @@ function Home() {
         <Hero />
         <MarqueeBand />
         <UniversSection />
+        <ExpansionMapSection />
         <HowItWorks />
         <LocalProof />
         <HomeSupport />
@@ -813,7 +814,7 @@ function LegalDetailsPage() {
         <aside className="font-mono-jatek text-[10px] uppercase tracking-[.16em] text-[#df3f91]">Mentions légales<p className="mt-3 text-[#12494f]/45">Dernière mise à jour<br />11 septembre 2026</p></aside>
         <article className="grid gap-12 text-[#12494f]">
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Éditeur du site</h2><p className="text-base leading-8 text-[#12494f]/70">JATEK est une marque de livraison locale en cours de déploiement à Oujda, Maroc. Le site est édité par JATEK et s’adresse en priorité aux habitants et commerces d’Oujda.</p></section>
-          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Nous contacter</h2><p className="text-base leading-8 text-[#12494f]/70">Email : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a><br />Téléphone : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="tel:+212536000000">+212 5 36 00 00 00</a></p></section>
+          <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Nous contacter</h2><p className="text-base leading-8 text-[#12494f]/70">Email : <a className="font-bold text-[#df3f91] underline underline-offset-4" href="mailto:contact@jatek.app">contact@jatek.app</a></p></section>
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Hébergement</h2><p className="text-base leading-8 text-[#12494f]/70">Le site est hébergé sur l’infrastructure Hostinger utilisée pour le plan Cloud Startup. Les informations contractuelles exactes de l’éditeur et de l’hébergeur devront être complétées avec les coordonnées figurant dans les contrats avant la mise en ligne commerciale.</p></section>
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Propriété intellectuelle</h2><p className="text-base leading-8 text-[#12494f]/70">La marque JATEK, son identité visuelle, ses textes, illustrations et éléments graphiques sont protégés. Toute reproduction ou utilisation sans autorisation préalable est interdite.</p></section>
           <section className="grid gap-4"><h2 className="font-display text-3xl font-bold tracking-[-.04em]">Données personnelles</h2><p className="text-base leading-8 text-[#12494f]/70">Pour comprendre les données traitées et exercer vos droits, consultez notre <Link className="font-bold text-[#df3f91] underline underline-offset-4" href="/confidentialite">politique RGPD</Link>.</p></section>
@@ -858,11 +859,6 @@ function SupportPage() {
                 <a href="mailto:contact@jatek.app" className="group flex items-center gap-5 rounded-[1.5rem] border border-[#12494f]/10 bg-white p-5 transition-all hover:shadow-lg hover:-translate-y-1" data-testid="link-support-email">
                   <span className="grid size-14 place-items-center rounded-2xl bg-[#f1e549] text-[#12494f] transition-transform group-hover:scale-110"><Mail size={22} /></span>
                   <span><span className="block text-[10px] font-bold uppercase tracking-[.15em] text-[#12494f]/50">Écrivez-nous</span><span className="mt-1 block text-base font-bold text-[#12494f]">contact@jatek.app</span></span>
-                  <ArrowUpRight size={18} className="ml-auto text-[#12494f]/30 group-hover:text-[#df3f91] transition-colors" />
-                </a>
-                <a href="tel:+212536000000" className="group flex items-center gap-5 rounded-[1.5rem] border border-[#12494f]/10 bg-white p-5 transition-all hover:shadow-lg hover:-translate-y-1" data-testid="link-support-phone">
-                  <span className="grid size-14 place-items-center rounded-2xl bg-[#50c5c3] text-white transition-transform group-hover:scale-110"><Phone size={22} /></span>
-                  <span><span className="block text-[10px] font-bold uppercase tracking-[.15em] text-[#12494f]/50">Appelez-nous</span><span className="mt-1 block text-base font-bold text-[#12494f]">+212 5 36 00 00 00</span></span>
                   <ArrowUpRight size={18} className="ml-auto text-[#12494f]/30 group-hover:text-[#df3f91] transition-colors" />
                 </a>
               </div>
