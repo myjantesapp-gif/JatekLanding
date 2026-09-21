@@ -40,13 +40,13 @@ const localeCopy = {
     navPartner: 'Devenir partenaire',
     support: 'Besoin d’aide ?',
     join: 'Rejoindre JATEK',
-    badge: 'Le meilleur d’Oujda',
+    badge: 'Oujda, notre point de départ',
     title: 'Ce que vous aimez.',
     accent: 'À deux rues.',
-    body: 'JATEK rassemble les bonnes adresses d’Oujda dans une seule app. Un repas, les courses, la pharmacie — commandés simplement, livrés par quelqu’un du quartier.',
+    body: 'JATEK commence à Oujda et rassemble déjà les bonnes adresses de la ville. Les prochaines villes marocaines arrivent progressivement, avec la même livraison simple et locale.',
     discover: 'Télécharger l’app',
     heroPartner: 'Devenir partenaire',
-    proof: 'Déjà adopté par des centaines d’Oujdis',
+    proof: 'Déjà adopté à Oujda, bientôt dans d’autres villes',
   },
   ar: {
     navUniverse: 'عالم JATEK',
@@ -54,18 +54,18 @@ const localeCopy = {
     navPartner: 'انضم كشريك',
     support: 'تحتاج إلى المساعدة؟',
     join: 'انضم إلى JATEK',
-    badge: 'الأفضل من وجدة',
+    badge: 'وجدة، نقطة انطلاقنا',
     title: 'كل ما تحب.',
     accent: 'على بُعد شارعين.',
-    body: 'تجمع JATEK أفضل عناوين وجدة في تطبيق واحد. وجبة أو مشتريات أو صيدلية — اطلب بسهولة واستلمها من شخص يعرف الحي.',
+    body: 'تبدأ JATEK من وجدة وتجمع أفضل عناوين المدينة. ستصل مدن مغربية أخرى تدريجياً قريباً، بنفس الخدمة المحلية والبسيطة.',
     discover: 'حمّل التطبيق',
     heroPartner: 'انضم كشريك',
-    proof: 'اختارها مئات الوجديين',
+    proof: 'بدأت في وجدة، وقريباً في مدن أخرى',
   },
 };
 
 const categories: { name: string; detail: string; icon: IconType; color: string }[] = [
-  { name: 'À manger', detail: 'Les tables qui font Oujda', icon: Store, color: 'bg-[#f1e549]' },
+  { name: 'À manger', detail: 'Les tables qui font la ville', icon: Store, color: 'bg-[#f1e549]' },
   { name: 'Épicerie', detail: 'Le quotidien, sans détour', icon: ShoppingBag, color: 'bg-[#50c5c3]' },
   { name: 'Pharmacie', detail: 'Ce qu’il vous faut, vite', icon: HeartPulse, color: 'bg-[#df3f91]' },
   { name: 'Beauté', detail: 'Les adresses qui vous ressemblent', icon: Scissors, color: 'bg-[#d8dfb0]' },
@@ -477,10 +477,10 @@ function ExpansionMapSection() {
                   </filter>
                 </defs>
                 <rect width="420" height="470" fill="#edf0dc" />
-                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 298 274 270 305 254 351 225 424 183 447 164 409 140 380 124 339 101 307 76 282 91 242 69 213 88 178 77 143 97 112 86 76Z" fill="#d8dfb0" stroke="#12494f" strokeWidth="4" filter="url(#map-shadow)" />
-                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 298 274 270 305 254 351 225 424 183 447 164 409 140 380 124 339 101 307 76 282 91 242 69 213 88 178 77 143 97 112 86 76Z" fill="url(#map-zellige)" opacity=".7" />
-                <path d="M101 302c61-26 98-51 181-110M112 340c54-48 80-93 133-170M96 112c57 10 91 34 178 74" fill="none" stroke="#50c5c3" strokeWidth="2" strokeDasharray="5 8" opacity=".75" />
-                <path d="M179 196c-20 24-27 47-18 70M203 279c15 28 14 58-2 92" fill="none" stroke="#df3f91" strokeWidth="2" opacity=".7" />
+                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 301 264 286 291 298 315 285 339 280 365 267 392 252 425 235 459 213 468 192 455 175 430 154 411 135 391 117 365 101 341 83 322 75 294 90 262 69 233 88 197 77 162 97 131 86 95Z" fill="#d8dfb0" stroke="#12494f" strokeWidth="4" filter="url(#map-shadow)" />
+                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 301 264 286 291 298 315 285 339 280 365 267 392 252 425 235 459 213 468 192 455 175 430 154 411 135 391 117 365 101 341 83 322 75 294 90 262 69 233 88 197 77 162 97 131 86 95Z" fill="url(#map-zellige)" opacity=".7" />
+                <path d="M101 322c61-26 99-52 181-110M121 366c56-45 85-93 130-177M104 131c55 8 91 33 178 74M143 399c37-15 69-13 105 7M170 431c23-11 42-9 59 4" fill="none" stroke="#50c5c3" strokeWidth="2" strokeDasharray="5 8" opacity=".75" />
+                <path d="M179 196c-20 24-27 47-18 70M203 279c15 28 14 58-2 92M187 368c7 22 8 44 4 65" fill="none" stroke="#df3f91" strokeWidth="2" opacity=".7" />
                 <g transform="translate(249 104)">
                   <circle r="13" fill="#df3f91" stroke="#fffaf1" strokeWidth="5" />
                   <circle r="4" fill="#fffaf1" />
@@ -505,6 +505,16 @@ function ExpansionMapSection() {
                   <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
                   <circle r="4" fill="#12494f" />
                   <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Agadir</text>
+                </g>
+                <g transform="translate(164 402)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="20" y="5" fill="#12494f" fontSize="12" fontWeight="800">Laâyoune</text>
+                </g>
+                <g transform="translate(197 444)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="20" y="5" fill="#12494f" fontSize="12" fontWeight="800">Dakhla</text>
                 </g>
                 <g transform="translate(276 182)">
                   <circle r="17" fill="#f1e549" stroke="#fffaf1" strokeWidth="6" />
