@@ -2,6 +2,7 @@ import { createContext, type FormEvent, type ReactNode, useContext, useEffect, u
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
 import officialJatekLogo from '@assets/jatek-app-icon_1790001370520.png';
+import moroccoRegionsMap from '@assets/Regions_du_Maroc_1790002459864.svg';
 import jatekHomeScreenshot from '@assets/Screenshot_20260920_035429_Jatek_1789923038313.jpg';
 import jatekMapScreenshot from '@assets/Screenshot_20260920_035234_Jatek_1789923038341.jpg';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -435,6 +436,17 @@ function UniversSection() {
 }
 
 function ExpansionMapSection() {
+  const mapCities = [
+    { name: 'Tanger', left: '70%', top: '8%', current: false, labelSide: 'right' },
+    { name: 'Rabat', left: '59%', top: '22%', current: false, labelSide: 'right' },
+    { name: 'Casablanca', left: '53%', top: '29%', current: false, labelSide: 'right' },
+    { name: 'Marrakech', left: '46%', top: '40%', current: false, labelSide: 'right' },
+    { name: 'Agadir', left: '37%', top: '49%', current: false, labelSide: 'right' },
+    { name: 'Laâyoune', left: '28%', top: '62%', current: false, labelSide: 'right' },
+    { name: 'Dakhla', left: '12%', top: '80%', current: false, labelSide: 'right' },
+    { name: 'Oujda', left: '86%', top: '23%', current: true, labelSide: 'left' },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-[#12494f] px-5 py-24 text-[#fffaf1] sm:px-8 lg:py-32">
       <MoroccanPattern className="absolute -right-36 -top-28 w-[560px] text-[#50c5c3] opacity-[0.08] rotate-12" />
@@ -467,62 +479,25 @@ function ExpansionMapSection() {
               </div>
               <MoroccoFlag className="size-9 rounded-md shadow-sm" />
             </div>
-            <div className="relative mt-4 aspect-[.88] overflow-hidden rounded-[1.75rem] bg-[#edf0dc]">
-              <svg viewBox="0 0 420 470" className="h-full w-full" role="img" aria-label="Carte stylisée du Maroc avec les prochaines villes JATEK">
-                <defs>
-                  <pattern id="map-zellige" width="24" height="24" patternUnits="userSpaceOnUse">
-                    <path d="M12 0 24 12 12 24 0 12Z" fill="none" stroke="#50c5c3" strokeWidth="1" opacity=".35" />
-                  </pattern>
-                  <filter id="map-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#12494f" floodOpacity=".18" />
-                  </filter>
-                </defs>
-                <rect width="420" height="470" fill="#edf0dc" />
-                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 301 264 286 291 298 315 285 339 280 365 267 392 252 425 235 459 213 468 192 455 175 430 154 411 135 391 117 365 101 341 83 322 75 294 90 262 69 233 88 197 77 162 97 131 86 95Z" fill="#d8dfb0" stroke="#12494f" strokeWidth="4" filter="url(#map-shadow)" />
-                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 301 264 286 291 298 315 285 339 280 365 267 392 252 425 235 459 213 468 192 455 175 430 154 411 135 391 117 365 101 341 83 322 75 294 90 262 69 233 88 197 77 162 97 131 86 95Z" fill="url(#map-zellige)" opacity=".7" />
-                <path d="M101 322c61-26 99-52 181-110M121 366c56-45 85-93 130-177M104 131c55 8 91 33 178 74M143 399c37-15 69-13 105 7M170 431c23-11 42-9 59 4" fill="none" stroke="#50c5c3" strokeWidth="2" strokeDasharray="5 8" opacity=".75" />
-                <path d="M179 196c-20 24-27 47-18 70M203 279c15 28 14 58-2 92M187 368c7 22 8 44 4 65" fill="none" stroke="#df3f91" strokeWidth="2" opacity=".7" />
-                <g transform="translate(249 104)">
-                  <circle r="13" fill="#df3f91" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#fffaf1" />
-                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Tanger</text>
-                </g>
-                <g transform="translate(214 155)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="-82" y="5" fill="#12494f" fontSize="13" fontWeight="800">Rabat</text>
-                </g>
-                <g transform="translate(199 194)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Casablanca</text>
-                </g>
-                <g transform="translate(178 272)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Marrakech</text>
-                </g>
-                <g transform="translate(139 360)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Agadir</text>
-                </g>
-                <g transform="translate(164 402)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="20" y="5" fill="#12494f" fontSize="12" fontWeight="800">Laâyoune</text>
-                </g>
-                <g transform="translate(197 444)">
-                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
-                  <circle r="4" fill="#12494f" />
-                  <text x="20" y="5" fill="#12494f" fontSize="12" fontWeight="800">Dakhla</text>
-                </g>
-                <g transform="translate(276 182)">
-                  <circle r="17" fill="#f1e549" stroke="#fffaf1" strokeWidth="6" />
-                  <circle r="5" fill="#df3f91" />
-                  <text x="22" y="5" fill="#12494f" fontSize="14" fontWeight="900">Oujda</text>
-                </g>
-              </svg>
+            <div className="relative mt-4 aspect-[.987] overflow-hidden rounded-[1.75rem] bg-[#edf0dc]">
+              <img src={moroccoRegionsMap} alt="Carte régionale complète du Maroc, du nord jusqu’au Sahara" className="absolute inset-0 h-full w-full object-contain" />
+              <div className="moroccan-tile pointer-events-none absolute inset-0 opacity-20 mix-blend-multiply" />
+              <div className="absolute inset-0" aria-label="Villes de déploiement JATEK">
+                {mapCities.map((city, index) => (
+                  <div
+                    key={city.name}
+                    className="absolute"
+                    style={{ left: city.left, top: city.top, animationDelay: `${index * 0.18}s` }}
+                  >
+                    <span className={`magenta-glow absolute left-0 top-0 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[3px] border-[#fffaf1] shadow-[0_5px_15px_rgba(18,73,79,.2)] sm:size-7 ${city.current ? 'bg-[#f1e549]' : 'bg-[#50c5c3]'}`}>
+                      <span className={`size-1.5 rounded-full sm:size-2 ${city.current ? 'bg-[#ec0f73]' : 'bg-[#12494f]'}`} />
+                    </span>
+                    <span className={`absolute top-0 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#fffaf1]/90 px-1.5 py-0.5 text-[9px] font-extrabold text-[#12494f] shadow-sm backdrop-blur-[2px] sm:px-2 sm:text-[11px] ${city.labelSide === 'left' ? 'right-3 translate-x-[-100%]' : 'left-3'} ${city.current ? 'text-[#ec0f73]' : ''}`}>
+                      {city.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="mt-4 flex items-center justify-between gap-4 text-xs text-[#12494f]/60">
               <span className="flex items-center gap-2"><span className="size-2 rounded-full bg-[#f1e549] ring-2 ring-[#f1e549]/30" /> Aujourd’hui</span>
