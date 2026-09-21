@@ -72,7 +72,7 @@ const categories: { name: string; detail: string; icon: IconType; color: string 
 ];
 
 const faqs = [
-  { question: 'Où livrez-vous à Oujda ?', answer: 'JATEK couvre les quartiers d’Oujda et s’étend chaque semaine avec de nouvelles adresses. Entrez votre quartier dans l’application pour voir les commerces disponibles autour de vous.' },
+  { question: 'Où livrez-vous aujourd’hui ?', answer: 'JATEK commence à Oujda et s’étend progressivement vers plusieurs villes marocaines. Entrez votre quartier dans l’application pour voir les commerces disponibles autour de vous.' },
   { question: 'Combien coûte la livraison ?', answer: 'Les frais sont affichés avant chaque commande. Ils dépendent de la distance et de la catégorie choisie — toujours sans mauvaise surprise.' },
   { question: 'Puis-je suivre ma commande ?', answer: 'Oui. Dès que votre commande est prise en charge, vous pouvez suivre son avancée en temps réel et échanger avec votre coursier si besoin.' },
   { question: 'Comment devenir partenaire ?', answer: 'Remplissez le formulaire partenaire avec quelques informations sur votre établissement. Notre équipe locale vous rappelle sous 48 heures pour vous accompagner.' },
@@ -227,7 +227,7 @@ function PageFooter() {
           </div>
           <div>
             <p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#f1e549]">JATEK, c’est</p>
-            <p className="mt-5 font-display text-2xl font-bold leading-tight">Oujda d’abord.<br /><span className="text-[#df3f91]">Le Maroc ensuite.</span></p>
+            <p className="mt-5 font-display text-2xl font-bold leading-tight">Un départ local.<br /><span className="text-[#df3f91]">Un Maroc en mouvement.</span></p>
           </div>
         </div>
         <div className="flex flex-col justify-between gap-3 pt-6 text-[12px] text-[#fffaf1]/45 sm:flex-row">
@@ -378,7 +378,7 @@ function MarqueeBand() {
     <div className="overflow-hidden bg-[#df3f91] py-4 text-white shadow-[inset_0_5px_15px_rgba(0,0,0,0.1)] relative z-10 mt-[-2rem]">
       <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap font-display text-2xl font-bold tracking-tight">
         {Array.from({ length: 4 }).flatMap((_, set) => [
-          'Livraison rapide', 'Oujda en mouvement', 'Les meilleures adresses', 'JATEK — دوزها'
+          'Livraison rapide', 'Oujda, point de départ', 'Les villes arrivent', 'JATEK — دوزها'
         ].map((item, i) => (
           <span key={`${set}-${i}`} className="flex items-center gap-12">
             {item}
@@ -401,7 +401,7 @@ function UniversSection() {
               <span className="w-8 h-px bg-[#df3f91]"></span> Univers
             </p>
             <h2 className="mt-5 max-w-[690px] font-display text-[clamp(2.8rem,6vw,5.5rem)] font-bold leading-[.92] tracking-[-.05em] text-[#12494f]">
-              Oujda dans<br />
+              Votre ville dans<br />
               <span className="text-[#df3f91]">votre poche.</span>
             </h2>
           </div>
@@ -538,7 +538,7 @@ function HowItWorks() {
   const steps = [
     { number: '01', title: 'Choisissez votre envie', detail: 'Parcourez les adresses près de vous, des incontournables aux petites pépites.', icon: Navigation },
     { number: '02', title: 'On prépare avec soin', detail: 'Votre commerce reçoit la commande. Un coursier JATEK se met en route.', icon: Store },
-    { number: '03', title: 'Ça arrive chez vous', detail: 'Suivez le trajet et profitez. Oujda n’a jamais été aussi proche.', icon: Route },
+    { number: '03', title: 'Ça arrive chez vous', detail: 'Suivez le trajet et profitez. Votre ville n’a jamais été aussi proche.', icon: Route },
   ];
   return (
     <section id="comment" className="clip-slant-top relative bg-[#edf0dc] px-5 py-32 sm:px-8 lg:py-44 overflow-hidden mt-[-4rem]">
