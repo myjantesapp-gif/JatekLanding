@@ -1,1 +1,0 @@
-- [JATEK legal publishing](jatek-legal-publishing.md) — never invent publisher or hosting identity details; complete them from official records before commercial launch.
