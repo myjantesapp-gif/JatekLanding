@@ -1,7 +1,7 @@
 import { createContext, type FormEvent, type ReactNode, useContext, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
-import jatekLogo from '@assets/jatek-logo-transparent.png';
+import officialJatekLogo from '@assets/jatek-app-icon_1790001370520.png';
 import jatekHomeScreenshot from '@assets/Screenshot_20260920_035429_Jatek_1789923038313.jpg';
 import jatekMapScreenshot from '@assets/Screenshot_20260920_035234_Jatek_1789923038341.jpg';
 import { ErrorBoundary } from '@/components/error-boundary';
@@ -114,8 +114,8 @@ function MoroccoFlag({ className = 'size-6' }: { className?: string }) {
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className="group inline-flex items-center gap-2.5" data-testid="link-logo">
-      <span className="flex items-center transition-transform duration-300 group-hover:rotate-[-3deg]">
-        <img src={jatekLogo} alt="JATEK" className={`h-8 w-[104px] object-contain ${light ? 'brightness-0 invert' : ''}`} />
+      <span className={`relative flex h-10 w-[118px] overflow-hidden rounded-[0.9rem] bg-[#ec0f73] shadow-[0_8px_20px_rgba(236,15,115,.22)] transition-transform duration-500 group-hover:rotate-[-3deg] group-hover:scale-105 ${light ? 'ring-1 ring-white/25' : 'ring-1 ring-[#df3f91]/20'}`}>
+        <img src={officialJatekLogo} alt="JATEK" className="absolute inset-0 h-full w-full object-cover object-center" />
       </span>
     </Link>
   );
@@ -171,7 +171,7 @@ function Header() {
         <div className="hidden items-center gap-5 md:flex">
           <Link href="/support" className={`text-[13px] font-bold transition-colors hover:text-[#df3f91] ${isHome ? 'text-white' : 'text-[#12494f]'}`} data-testid="link-nav-support">{labels.support}</Link>
           <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-[12px] font-bold transition-colors hover:border-[#df3f91] hover:text-[#df3f91] ${isHome ? 'border-white/25 text-white' : 'border-[#12494f]/15 text-[#12494f]'}`} aria-label={locale === 'fr' ? 'Passer en arabe' : 'Passer en français'} data-testid="button-language-toggle"><MoroccoFlag className="size-4" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
-          <Link href="/devenir-partenaire" className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-extrabold transition-all hover:-translate-y-0.5 ${isHome ? 'bg-[#f1e549] text-[#12494f] hover:shadow-[0_5px_15px_rgba(241,229,73,0.3)]' : 'bg-[#df3f91] text-white hover:bg-[#c92d7c]'}`} data-testid="link-nav-partner">
+          <Link href="/devenir-partenaire" className={`group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-extrabold transition-all hover:-translate-y-0.5 ${isHome ? 'bg-[#f1e549] text-[#12494f] hover:shadow-[0_5px_15px_rgba(241,229,73,0.3)]' : 'bg-[#ec0f73] text-white hover:bg-[#d70862]'} ${!isHome ? 'magenta-glow' : ''}`} data-testid="link-nav-partner">
             {labels.join} <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
@@ -189,7 +189,7 @@ function Header() {
             <div className="h-px w-full bg-[#12494f]/10 my-2"></div>
             <Link href="/support" onClick={() => setOpen(false)} className="rounded-2xl px-5 py-4 text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="link-mobile-support">{labels.support}</Link>
             <button type="button" onClick={() => setLocale(locale === 'fr' ? 'ar' : 'fr')} className="flex items-center gap-3 rounded-2xl px-5 py-4 text-left text-base font-bold text-[#12494f] hover:bg-[#edf0dc] transition-colors" data-testid="button-mobile-language-toggle"><MoroccoFlag className="size-5" /> {locale === 'fr' ? 'العربية' : 'Français'}</button>
-            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="mt-4 flex items-center justify-between rounded-2xl bg-[#df3f91] px-6 py-4 text-base font-extrabold text-white shadow-md" data-testid="link-mobile-partner">{labels.join} <ArrowUpRight size={20} /></Link>
+            <Link href="/devenir-partenaire" onClick={() => setOpen(false)} className="magenta-glow mt-4 flex items-center justify-between rounded-2xl bg-[#ec0f73] px-6 py-4 text-base font-extrabold text-white shadow-md" data-testid="link-mobile-partner">{labels.join} <ArrowUpRight size={20} /></Link>
           </nav>
         </div>
       )}
@@ -351,7 +351,7 @@ function Hero() {
             {labels.body}
           </p>
           <div className="reveal-up reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row">
-            <button type="button" onClick={() => document.getElementById('univers')?.scrollIntoView({ behavior: 'smooth' })} className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#df3f91] px-8 py-4 text-sm font-extrabold text-white transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(223,63,145,0.4)] hover:bg-[#c92d7c]" data-testid="button-discover">
+            <button type="button" onClick={() => document.getElementById('univers')?.scrollIntoView({ behavior: 'smooth' })} className="magenta-glow group inline-flex items-center justify-center gap-3 rounded-full bg-[#ec0f73] px-8 py-4 text-sm font-extrabold text-white transition-all hover:-translate-y-1 hover:shadow-[0_10px_24px_rgba(236,15,115,0.45)] hover:bg-[#d70862]" data-testid="button-discover">
               {labels.discover} <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </button>
             <Link href="/devenir-partenaire" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/25 bg-white/5 backdrop-blur-sm px-6 py-4 text-sm font-bold text-[#fffaf1] transition-all hover:bg-white/10 hover:border-[#f1e549] hover:text-[#f1e549]" data-testid="link-hero-partner">
