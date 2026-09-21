@@ -1,6 +1,6 @@
 import { createContext, type FormEvent, type ReactNode, useContext, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Phone, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BadgeCheck, Bike, Check, ChevronDown, Clock3, HeartPulse, Instagram, Leaf, LockKeyhole, Mail, MapPin, Menu, MessageCircle, Navigation, Route, Scissors, Send, ShoppingBag, Sparkles, Store, Users, X, Search, User } from 'lucide-react';
 import jatekLogo from '@assets/jatek-logo-transparent.png';
 import jatekHomeScreenshot from '@assets/Screenshot_20260920_035429_Jatek_1789923038313.jpg';
 import jatekMapScreenshot from '@assets/Screenshot_20260920_035234_Jatek_1789923038341.jpg';
@@ -222,7 +222,6 @@ function PageFooter() {
             <p className="font-mono-jatek text-[10px] uppercase tracking-[.18em] text-[#f1e549]">À votre service</p>
             <div className="mt-5 grid gap-3 text-sm text-[#fffaf1]/70">
               <Link href="/support" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-support">Centre d’aide</Link>
-              <a href="tel:+212536000000" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-phone">+212 5 36 00 00 00</a>
               <a href="mailto:contact@jatek.app" className="transition-colors hover:text-[#fffaf1]" data-testid="link-footer-mail">contact@jatek.app</a>
             </div>
           </div>
@@ -428,6 +427,97 @@ function UniversSection() {
               <div className={`absolute -bottom-16 -right-16 size-48 rounded-full opacity-10 transition-transform duration-700 group-hover:scale-150 ${color}`} />
             </Link>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ExpansionMapSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#12494f] px-5 py-24 text-[#fffaf1] sm:px-8 lg:py-32">
+      <MoroccanPattern className="absolute -right-36 -top-28 w-[560px] text-[#50c5c3] opacity-[0.08] rotate-12" />
+      <div className="absolute -bottom-40 -left-24 size-[420px] rounded-full bg-[#df3f91]/10 blur-[100px]" />
+      <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+        <div className="reveal-up">
+          <p className="font-mono-jatek flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.2em] text-[#f1e549]">
+            <span className="h-px w-8 bg-[#f1e549]" /> Bientôt partout au Maroc
+          </p>
+          <h2 className="mt-5 max-w-[590px] font-display text-[clamp(2.8rem,6vw,5.4rem)] font-bold leading-[.92] tracking-[-.05em]">
+            D’Oujda<br />
+            <span className="text-[#f1e549]">à tout le Maroc.</span>
+          </h2>
+          <p className="mt-7 max-w-[470px] text-base leading-7 text-[#fffaf1]/75">
+            JATEK commence à Oujda et s’étendra progressivement dans plusieurs villes marocaines, très bientôt. Même proximité, nouvelles adresses, une ville après l’autre.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#f1e549] px-4 py-2.5 text-xs font-extrabold text-[#12494f]"><span className="size-2 rounded-full bg-[#df3f91]" /> Disponible à Oujda</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-xs font-bold text-white/80"><span className="size-2 rounded-full bg-[#50c5c3]" /> Plusieurs villes bientôt</span>
+          </div>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-[570px] reveal-up reveal-delay-1">
+          <div className="moroccan-tile absolute inset-0 rounded-[2.5rem] opacity-20" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-[#fffaf1] p-5 shadow-[0_25px_70px_rgba(0,0,0,.22)] sm:p-8">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-mono-jatek text-[10px] font-bold uppercase tracking-[.18em] text-[#df3f91]">La carte JATEK</p>
+                <p className="mt-1 font-display text-xl font-bold text-[#12494f]">Notre Maroc, bientôt</p>
+              </div>
+              <MoroccoFlag className="size-9 rounded-md shadow-sm" />
+            </div>
+            <div className="relative mt-4 aspect-[.88] overflow-hidden rounded-[1.75rem] bg-[#edf0dc]">
+              <svg viewBox="0 0 420 470" className="h-full w-full" role="img" aria-label="Carte stylisée du Maroc avec les prochaines villes JATEK">
+                <defs>
+                  <pattern id="map-zellige" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M12 0 24 12 12 24 0 12Z" fill="none" stroke="#50c5c3" strokeWidth="1" opacity=".35" />
+                  </pattern>
+                  <filter id="map-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#12494f" floodOpacity=".18" />
+                  </filter>
+                </defs>
+                <rect width="420" height="470" fill="#edf0dc" />
+                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 298 274 270 305 254 351 225 424 183 447 164 409 140 380 124 339 101 307 76 282 91 242 69 213 88 178 77 143 97 112 86 76Z" fill="#d8dfb0" stroke="#12494f" strokeWidth="4" filter="url(#map-shadow)" />
+                <path d="M104 26 165 35 198 62 253 72 288 111 278 151 310 188 287 229 298 274 270 305 254 351 225 424 183 447 164 409 140 380 124 339 101 307 76 282 91 242 69 213 88 178 77 143 97 112 86 76Z" fill="url(#map-zellige)" opacity=".7" />
+                <path d="M101 302c61-26 98-51 181-110M112 340c54-48 80-93 133-170M96 112c57 10 91 34 178 74" fill="none" stroke="#50c5c3" strokeWidth="2" strokeDasharray="5 8" opacity=".75" />
+                <path d="M179 196c-20 24-27 47-18 70M203 279c15 28 14 58-2 92" fill="none" stroke="#df3f91" strokeWidth="2" opacity=".7" />
+                <g transform="translate(249 104)">
+                  <circle r="13" fill="#df3f91" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#fffaf1" />
+                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Tanger</text>
+                </g>
+                <g transform="translate(214 155)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="-82" y="5" fill="#12494f" fontSize="13" fontWeight="800">Rabat</text>
+                </g>
+                <g transform="translate(199 194)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Casablanca</text>
+                </g>
+                <g transform="translate(178 272)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Marrakech</text>
+                </g>
+                <g transform="translate(139 360)">
+                  <circle r="13" fill="#50c5c3" stroke="#fffaf1" strokeWidth="5" />
+                  <circle r="4" fill="#12494f" />
+                  <text x="20" y="5" fill="#12494f" fontSize="13" fontWeight="800">Agadir</text>
+                </g>
+                <g transform="translate(276 182)">
+                  <circle r="17" fill="#f1e549" stroke="#fffaf1" strokeWidth="6" />
+                  <circle r="5" fill="#df3f91" />
+                  <text x="22" y="5" fill="#12494f" fontSize="14" fontWeight="900">Oujda</text>
+                </g>
+              </svg>
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-4 text-xs text-[#12494f]/60">
+              <span className="flex items-center gap-2"><span className="size-2 rounded-full bg-[#f1e549] ring-2 ring-[#f1e549]/30" /> Aujourd’hui</span>
+              <span className="flex items-center gap-2"><span className="size-2 rounded-full bg-[#50c5c3]" /> Très bientôt</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
